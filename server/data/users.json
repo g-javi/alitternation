@@ -1,12 +1,12 @@
 {
     "username1": {
-        "email": "sdhjs@gmail.com",
+        "googleId": "123456gfdsdf",
         "balance": 250,
         "firstName": "John",
         "lastName": "Apple"
     },
     "username2": {
-        "email": "abc@gmail.com",
+        "googleId": "wetry7545er",
         "balance": 150,
         "firstName": "Bob",
         "lastName": "S"

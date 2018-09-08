@@ -1,19 +1,51 @@
 {
-    "item1": {
-        "barcode": [12345678],
-        "description": "A glass bottle",
-        "title": "Coca-cola Bottle",
+    "pocky": {
+        "barcode": 4901005510340,
+        "description": "Pocky",
+        "title": "Pocky",
         "recyclable": true,
-        "tags": ["glass", "bottle"],
-        "disposalMethod": "glass"
+        "tags": ["cardboard", "food"],
+        "disposalMethod": "cardboard"
     },
-    "item2": {
-        "barcode": [12345678, 234567876],
+    "coolRidgeWater": {
+        "barcode": 9315596302119,
         "description": "A plastic bottle",
         "title": "Water Bottle",
         "recyclable": true,
         "tags": ["plastic", "bottle"],
         "disposalMethod": "plastic"
+    },
+    "lemonadeCan": {
+        "barcode": 9315596002750,
+        "description": "Lemonade Can",
+        "title": "Lemonade Can",
+        "recyclable": true,
+        "tags": ["aluminium", "can"],
+        "disposalMethod": "metal"
+    },
+    "cokeBottle": {
+        "barcode": 9300675075329,
+        "description": "Coca Cola Ginger",
+        "title": "Coca Cola Ginger",
+        "recyclable": true,
+        "tags": ["plastic", "bottle"],
+        "disposalMethod": "plastic"
+    },
+    "sanPellegrino": {
+        "barcode": 8002270018794,
+        "description": "San Pellegrino Limonata",
+        "title": "San Pellegrino Limonata",
+        "recyclable": true,
+        "tags": ["glass", "bottle"],
+        "disposalMethod": "glass"
+    },
+    "ramune": {
+        "barcode": 9317523346418,
+        "description": "Kimura Ramune Drink",
+        "title": "Kimura Ramune Drink",
+        "recyclable": true,
+        "tags": ["glass", "bottle"],
+        "disposalMethod": "glass"
     },
     "item3": {
         "description": "A pizza box",
@@ -23,11 +55,17 @@
         "disposalMethod": "foodWaste"
     },
     "item4": {
-        "barcode": [9098753],
         "description": "Milk carton",
         "title": "Milk carton",
         "recyclable": true,
         "tags": ["cardboard", "bottle"],
         "disposalMethod": "cardboard"
+    },
+    "item1": {
+        "description": "A glass bottle",
+        "title": "Coca-cola Bottle",
+        "recyclable": true,
+        "tags": ["glass", "bottle"],
+        "disposalMethod": "glass"
     }
 }

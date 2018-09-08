@@ -1,4 +1,4 @@
 export interface Barcode {
     depositable: boolean;
-    amount: number;
+    amount?: number;
 }

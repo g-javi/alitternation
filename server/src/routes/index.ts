@@ -4,7 +4,7 @@ import SurveyController from "./api/SurveyController";
 import BinsController from "./api/BinController";
 import RecoveryCentreController from "./api/RecoveryCentreController";
 import auth from "./auth";
-
+import UserController from "./api/UserController";
 
 const router = express.Router();
 
@@ -36,6 +36,7 @@ router.use("/survey", SurveyController);
 router.use("/bins", BinsController);
 router.use("/centres", RecoveryCentreController);
 router.use("/litter", LitterController);
+router.use("/user", UserController);
 router.use("/auth", auth);
 
 // Simple route middleware to ensure user is authenticated.

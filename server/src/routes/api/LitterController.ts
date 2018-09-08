@@ -1,15 +1,28 @@
 import express from "express";
+import { getDb } from "../../util/database"
+import { addAllLitterData } from "../../util/retrieveFromDb";
 
-const api = express.Router();
+const litter = express.Router();
 
-const routes = 
+litter.get("/items", async (req, res, next) => {
+    const litter = await getDb().collection("litterData").find().toArray();
 
-api.get("/itemList", (req, res, next) => {
+    res.json(litter);
+});
+
+litter.get("/barcode/:barcodeNumber", async (req, res, next) => {
+    // const litter = await addAllLitterData(getDb());
+    const litter = await getDb().collection("litterData").find().toArray();
+    const barcodeItems = litter.filter((item) => item.barcode);
+
+    const item = barcodeItems.find((item) => item.barcode == req.params.barcodeNumber);
+    if(item) {
+        res.json(item);
+    } else {
+        res.json(null);
+    }
+
 
 });
 
-api.get("/barcode", (req, res, next) => {
-    
-});
-
-export default api;
+export default litter;

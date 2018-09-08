@@ -12,10 +12,7 @@ import { MongoClient, Db } from "mongodb";
 // ];
 
 const data = [
-    "barcodes",
-    "instructions",
-    "litter",
-    "users"
+    "instructions"
 ];
 
 MongoClient.connect("mongodb://localhost:27017", { useNewUrlParser: true }, async function (err, db) {

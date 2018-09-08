@@ -1,6 +1,7 @@
 import express from "express";
 import { getDb } from "../../util/database"
 import { addAllLitterData } from "../../util/retrieveFromDb";
+import { ObjectID } from "mongodb";
 
 const litter = express.Router();
 
@@ -18,6 +19,18 @@ litter.get("/barcode/:barcodeNumber", async (req, res, next) => {
     const item = barcodeItems.find((item) => item.barcode == req.params.barcodeNumber);
     if(item) {
         res.json(item);
+    } else {
+        res.json(null);
+    }
+});
+
+litter.get("/instructions/:itemId", async (req, res, next) => {
+    const item = await getDb().collection("litter").find({ _id: new ObjectID(req.params.itemId) }).toArray();
+    
+    const disposalMethod = item[0].disposalMethod;
+    const instructions = await getDb().collection("instructions").find({ material: disposalMethod }).toArray();
+    if (instructions) {
+        res.json(instructions);
     } else {
         res.json(null);
     }

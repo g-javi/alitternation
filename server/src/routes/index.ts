@@ -19,9 +19,15 @@ router.get('/', (req: any, res) => {
     //     });
     // }
 
-    res.json({
-        id: 1
-    })
+    if(req.user) {
+        res.json({
+            user: req.user
+        })
+    } else {
+        res.json({
+            error: "Unauthorized"
+        })
+    }
 });
 
 router.use("/survey", SurveyController);

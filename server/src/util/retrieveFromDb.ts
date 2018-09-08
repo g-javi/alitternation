@@ -38,13 +38,14 @@ export function addCollectionEntry(myDb: MongoDb.Db, collectionName: string, dat
     });
 }
 
-export function addAllLitterData(myDb: MongoDb.Db) {
+export async function addAllLitterData(myDb: MongoDb.Db) {
     const filePath = __dirname + "/../../data/litter.json";
     const litterData = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    for (const litter in litterData) {
-        myDb.collection(litterCollectionName).insertOne(litterData[litter], function(err, res) {
-            if (err) throw err;
-        });
+    const litterDataArray = Object.keys(litterData).map((obj) => litterData[obj]).map((o) => {o.barcode += ''; return o;});
+
+    for (const litter in litterDataArray) {
+
+        await myDb.collection(litterCollectionName).insertOne(litterDataArray[litter]);
     }
     console.log("All litter data added");
 }

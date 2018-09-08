@@ -1,6 +1,7 @@
 /// <reference types="googlemaps" />
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from "@angular/router";
+import GeolocationMarker from "geolocation-marker";
 
 @Component({
   selector: 'app-main',
@@ -24,18 +25,19 @@ export class MainComponent implements OnInit {
       disableDefaultUI: true,
     };
 
-    this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
+    const map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
+    this.map = map;
 
-    // Try HTML5 geolocation.
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
+      navigator.geolocation.getCurrentPosition(position => {
+        const pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
 
-        this.map.setCenter(pos);
-      }, function() {
+        map.setCenter(pos);
+        // TODO: not working???
+        new GeolocationMarker(map);
       });
     }
 

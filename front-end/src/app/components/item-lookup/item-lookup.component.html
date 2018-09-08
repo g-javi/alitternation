@@ -1,3 +1,10 @@
-<p>
-  item-lookup works!
-</p>
+<div class="top-bar sticky">
+  <button (click)="goBack()">&lt;-</button>
+  <span>Item lookup</span>
+</div>
+
+<ul id="item-list">
+  <li *ngFor="let item of items" (click)="goToItem(item.id)">
+    {{ item.label }}
+  </li>
+</ul>

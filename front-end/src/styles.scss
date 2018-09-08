@@ -1,12 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body {
+html {
     height: 100%;
+}
+
+html, body {
+    min-height: 100%;
     box-sizing: border-box;
     position: relative;
 
     margin: 0;
     padding: 0;
+
+    font-size: 18px;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -14,3 +20,35 @@ html, body {
     box-sizing: inherit;
 }
 
+button {
+    font: inherit;
+    color: inherit;
+}
+
+.full-screen-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 3rem;
+    display: flex;
+    align-items: center;
+
+    &.sticky {
+        position: sticky;
+        top: 0;
+        left: auto;
+        right: auto;
+
+        background: lightseagreen;
+    }
+}

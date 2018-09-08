@@ -1,3 +1,18 @@
-<p>
-  user-info works!
-</p>
+<div class="top-bar sticky">
+  <button (click)="goBack()">&lt;-</button>
+  <span>{{username}}</span>
+</div>
+
+<div class="credit-owing-message">
+  You have collected
+  <div class="credit-amount">{{ (credit / 100) | currency:'AUD':'$' }}</div>
+  that can be redeemed at your local recycling depot
+</div>
+
+<div>
+  <a>Where is my nearest recycling depot?</a>
+</div>
+
+<div>
+  <a>Sign out</a>
+</div>

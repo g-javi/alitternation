@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-info.component.scss']
 })
 export class UserInfoComponent implements OnInit {
+  /** Credit in cents */
+  private credit: number = 4210;
+
+  private username: string = "{{username}}";
 
   constructor() { }
 

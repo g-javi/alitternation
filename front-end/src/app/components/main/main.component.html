@@ -1,8 +1,16 @@
-<p>
-  main works!
-</p>
-<video id="main-video" autoplay>
+<div class="full-screen-wrapper">
+  <div id="map" class="full-screen-wrapper"></div>
 
-</video>
+  <div id="user-info" class="translucent-bg">
+    <span>User</span>
+    <span>$0.00</span>
+  </div>
 
-<button (click)="capture()">Capture</button>
+  <div id="action-buttons" class="translucent-bg">
+    <div class="cta-question">Found litter?</div>
+    <div class="button-container">
+      <button (click)="goToImageCapture()">Capture</button>
+      <button (click)="goToItemLookup()">Lookup</button>
+    </div>
+  </div>
+</div>

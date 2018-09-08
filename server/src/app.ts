@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import getConfig from "./util/getConfig";
-import router from "./routes";
+import router from "./routes/";
 import passport from "passport";
 import { connect } from "./util/database";
 require("./util/GoogleAuth");

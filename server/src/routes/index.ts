@@ -1,6 +1,7 @@
 import express from "express";
 import LitterController from "./api/LitterController";
 import SurveyController from "./api/SurveyController";
+import BinsController from "./api/BinController";
 import auth from "./auth";
 
 
@@ -31,6 +32,7 @@ router.get('/', (req: any, res) => {
 });
 
 router.use("/survey", SurveyController);
+router.use("/bins", BinsController);
 router.use("/litter", LitterController);
 router.use("/auth", auth);
 

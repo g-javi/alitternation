@@ -38,6 +38,10 @@ passport.use(new GoogleStrategy({
         // User.findOrCreate({ googleId: profile.id }, function (err: any, user: any) {
         //     return done(err, user);
         // });
+
+
+        
+
     }
 ));
 

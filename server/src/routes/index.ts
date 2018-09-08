@@ -1,5 +1,5 @@
 import express from "express";
-import api from "./api";
+import LitterController from "./api/LitterController";
 import auth from "./auth";
 
 
@@ -23,9 +23,8 @@ router.get('/', (req: any, res) => {
     })
 });
 
-router.use("/api", api);
+router.use("/litter", LitterController);
 router.use("/auth", auth);
-
 
 
 

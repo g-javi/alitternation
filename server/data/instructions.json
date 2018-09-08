@@ -1,0 +1,34 @@
+{
+    "paper": {
+        "info": "Newspaper, junk mail, brochures, office paper, gift wrapping paper, used notebooks, packaging paper, glossy paper and magazines, envelopes (including window envelopes), phone books, greeting cards, coloured paper, paper bags and scrap paper.",
+        "instructions": "Recycle in yellow bin"
+    },
+    "cardboard": {
+        "info": "Cardboard boxes, milk/juice cartons (e.g. long-life milk and fruit juice cartons/boxes), egg cartons, toy boxes, pizza and cereal boxes, detergent boxes, tissue boxes and cardboard coffee cups.",
+        "instructions": "Recycle in yellow bin"
+    },
+    "plastic": {
+        "info": "All firm plastic containers such as soft drink bottles, takeaway containers, margarine containers, milk and juice bottles, yoghurt tubs, biscuit and sushi trays, detergent and shampoo bottles and disposable plates and cups",
+        "instructions": "Recycle in yellow bin"
+    },
+    "metal": {
+        "info": "All aluminium and steel packaging can be recycled including aerosol cans, paint tins (empty and dry), aluminium foil and pie trays",
+        "instructions": "Recycle in yellow bin"
+    },
+    "tissue": {
+        "info": "The paper fibres in them are too short to recycle making it too difficult to recover any worthwhile material",
+        "instructions": "Do not recycle!"
+    },
+    "glass":{
+        "info": "Only glass used for packaging (e.g. bottles and jars) is collected for recycling through the household recycling bin. Other glass items are manufactured differently which makes them more prone to shattering and less suitable for recycling.",
+        "instructions": "Do not recycle!"
+    },
+    "plasticBag": {
+        "info": "Do not recycle!",
+        "instructions": "Do not recycle!"
+    },
+    "foodWaste": {
+        "info": "Empty your containers of food and liquids before you recycle them. A small amount of residue is acceptable and will not ruin the whole load of recycling.",
+        "instructions": "Recycle in yellow bin"
+    }
+}

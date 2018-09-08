@@ -6,10 +6,10 @@ const routes =
 
 api.get("/itemList", (req, res, next) => {
 
-})
+});
 
 api.get("/barcode", (req, res, next) => {
     
-})
+});
 
 export default api;

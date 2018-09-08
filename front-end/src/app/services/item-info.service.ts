@@ -8,5 +8,11 @@ export class ItemInfoService {
   private readonly SERVER_ENDPOINT = 'http://localhost:8080/';
   public activeItem: any;
 
-  constructor() { }
+  itemInstructions(id: string) {
+    return new Promise(resolve => {
+      $.getJSON(this.SERVER_ENDPOINT + 'litter/instructions/' + id).done((_) => {
+        resolve(_);
+      });
+    });
+  }
 }

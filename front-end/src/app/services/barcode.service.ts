@@ -27,12 +27,9 @@ export class BarcodeService {
   openBarcodeDialog() {
     if (this._videoDevices[0]) {
       this.readBarcode(this._videoDevices[0].id).then(result => {
-        // this._codeReader.reset();
-        // alert(result);
-        this._litterService.checkBarcode(result).then(response => {
+        this._litterService.checkBarcode(result).then((response: any) => {
           this._itemInfo.activeItem = response;
-          // console.log(response);
-          this._router.navigate(['item-detail-info', result]);
+          this._router.navigate(['item-detail-info', response._id]);
         });
       });
     } else {

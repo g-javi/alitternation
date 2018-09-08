@@ -9,7 +9,7 @@ import { ItemInfoService } from '../../services/item-info.service';
   styleUrls: ['./item-detail-info.component.scss']
 })
 export class ItemDetailInfoComponent implements OnInit {
-  private id: number | undefined = undefined;
+  private id: string | undefined = undefined;
   private routeSubscription: any;
 
   constructor(
@@ -20,9 +20,11 @@ export class ItemDetailInfoComponent implements OnInit {
 
   ngOnInit() {
     this.routeSubscription = this.route.params.subscribe(params => {
-       this.id = +params['id'];
-
-       // TODO: Fetch item info
+      this.id = params['id'];
+      this._itemInfo.itemInstructions(this.id).then(_ => {
+        // item instruction
+        console.log(_[0]);
+      });
     });
   }
 

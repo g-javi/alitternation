@@ -6,7 +6,7 @@
 <input type="text" id="search-field" [(ngModel)]="searchQuery" />
 
 <ul id="item-list">
-  <li *ngFor="let item of filteredItems" (click)="goToItem(item.id)">
+  <li *ngFor="let item of filteredItems" (click)="goToItem(item._id)">
     {{ item.description }}
   </li>
 </ul>

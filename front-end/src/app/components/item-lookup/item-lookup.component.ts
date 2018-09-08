@@ -42,6 +42,6 @@ export class ItemLookupComponent implements OnInit {
   }
 
   goToItem(itemId: number) {
-    this.router.navigate(['/item-detail-info/', itemId]);
+    this.router.navigate(['item-detail-info', itemId]);
   }
 }

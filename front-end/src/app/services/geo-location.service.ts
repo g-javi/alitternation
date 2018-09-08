@@ -5,5 +5,16 @@ import { Injectable } from '@angular/core';
 })
 export class GeoLocationService {
 
-  constructor() { }
+  currentLocation() {
+    return new Promise(resolve => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          resolve(position);
+        },
+        (error) => {
+          resolve(null);
+        }
+      );
+    });
+  }
 }

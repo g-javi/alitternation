@@ -10,8 +10,7 @@ import { tap } from 'rxjs/operators';
 export class BarcodeService {
   private _codeReader: any;
   public _videoDevices: any[];
-  private _dialogRef: MatDialogRef<BarcodeComponent, any>;
-  constructor(private _dialog: MatDialog) {
+  constructor() {
     this._codeReader = new BrowserBarcodeReader();
     this._videoDevices = [];
     this.getDevices();
@@ -20,21 +19,17 @@ export class BarcodeService {
   }
 
   openBarcodeDialog() {
-    this._dialogRef = this._dialog.open(BarcodeComponent, {
-      height: '300px',
-      width: '500px',
-    });
-    const openSub = this._dialogRef.afterOpen().subscribe(_  => {
+    if (this._videoDevices[0]) {
       this.readBarcode(this._videoDevices[0].id).then(result => {
-        this._codeReader.reset();
+        // this._codeReader.reset();
         alert(result);
       });
-    });
-
-    this._dialogRef.afterClosed().toPromise().then(_ => openSub.unsubscribe());
+    } else {
+      this.getDevices().then(_ => this.openBarcodeDialog());
+    }
   }
 
-  readBarcode(deviceId: string, elementId: string = 'video'): Promise<string | null> {
+  readBarcode(deviceId: string, elementId: string = 'main-video'): Promise<string | null> {
     return new Promise(resolve => {
       this._codeReader.decodeFromInputVideoDevice(deviceId, elementId)
         .then(result => {
@@ -50,7 +45,7 @@ export class BarcodeService {
 
   getDevices() {
     this._videoDevices = [];
-    this._codeReader.getVideoInputDevices()
+    return this._codeReader.getVideoInputDevices()
       .then(videoInputDevices => {
         videoInputDevices.forEach(device => {
           console.log(`${device.label}, ${device.deviceId}`);

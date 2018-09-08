@@ -14,10 +14,10 @@ export class MediaService {
 
   constructor() {
     this._snapShotCanvas = document.createElement('canvas');
-    this.getStream();
+    // this.getStream();
     this._mediaDevicesSubject = new BehaviorSubject<MediaDeviceInfo[]>([]);
     this._defaultStream = new BehaviorSubject<MediaStream>(null);
-    this.updateMediaDeviceList();
+    // this.updateMediaDeviceList();
   }
 
   set videoElement(element: HTMLVideoElement) {
@@ -47,6 +47,7 @@ export class MediaService {
     };
     navigator.mediaDevices.getUserMedia(constrains).then(stream => {
       this._defaultStream.next(stream);
+      this.updateMediaDeviceList();
     }).catch(e => {
       console.warn(e);
       alert('Unable to access the Camera!');
@@ -78,14 +79,14 @@ export class MediaService {
   }
 
   snapshot() {
-    console.log(this._videoElement.height);
-    console.log(this._videoElement.width);
     this._snapShotCanvas.height = this._videoElement.height;
     this._snapShotCanvas.width = this._videoElement.width;
     const ctx = this._snapShotCanvas.getContext('2d');
-    ctx.drawImage(this._videoElement, 0, 0, this._snapShotCanvas.width,
-      this._snapShotCanvas.height);
+    ctx.drawImage(this._videoElement, 0, 0, this._snapShotCanvas.width, this._snapShotCanvas.height);
+    // const link = document.createElement('a');
+    // link.download = 'filename.png';
+    // link.href = this._snapShotCanvas.toDataURL();
+    // link.click();
     return this._snapShotCanvas.toDataURL().replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
-    // .toDataURL('image/png');
   }
 }

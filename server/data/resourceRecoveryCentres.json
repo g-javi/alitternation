@@ -1,0 +1,4 @@
+{"_id":{"$oid":"5b9381c0f9d6c4f1669cbd43"},"Name":"Ferny Grove","Address":"101 Upper Kedron Road, Ferny Grove","Opening Hours":"6.30am - 5.45pm","Latitude":-27.411645,"Longitude":152.938385,"Contact":"3403 8888"}
+{"_id":{"$oid":"5b9381c0f9d6c4f1669cbd44"},"Name":"Willawong","Address":"360 Sherbrooke Road, Willawong","Opening Hours":"6.30am - 5.45pm","Latitude":-27.599431,"Longitude":153.004427,"Contact":"3403 8888"}
+{"_id":{"$oid":"5b9381c0f9d6c4f1669cbd45"},"Name":"Chandler","Address":"Tilley Road, Chandler (opposite the Sleeman Sports Complex)","Opening Hours":"6.30am - 5.45pm","Latitude":-27.516592,"Longitude":153.151829,"Contact":"3403 8888"}
+{"_id":{"$oid":"5b9381c0f9d6c4f1669cbd46"},"Name":"Nudgee","Address":"1402 Nudgee Road, Nudgee","Opening Hours":"6.30am - 5.45pm","Latitude":-27.363504,"Longitude":153.101446,"Contact":"3403 8888"}

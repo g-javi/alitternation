@@ -23,7 +23,7 @@ connect().then(() => {
     const app = express();
 
     app.use(cookieSession({
-        name: 'session',
+        name: 'alitternation_session',
         keys: ['123']
     }));
 

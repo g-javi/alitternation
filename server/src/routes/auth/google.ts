@@ -11,11 +11,8 @@ google.get('/',
 
 google.get( '/callback',
 	passport.authenticate( 'google', {
-		successReturnToOrRedirect: "/",
+		successRedirect: "/",
 		failureRedirect: '/login'
-}, (err, profile) => {
-    // send profile info back
-    console.log(profile);
 }));
 
 export default google;

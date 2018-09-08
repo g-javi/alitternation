@@ -45,7 +45,8 @@ passport.use(new GoogleStrategy({
             }
           );
 
-        return done(null, result);
+        request.user = result.value;
+        return done(null, result.value);
 
     }
 ));

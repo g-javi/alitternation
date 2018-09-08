@@ -1,5 +1,5 @@
 import { MongoClient, Db } from "mongodb";
-let db:Db;
+let db: Db;
 
 export function connect(){
     return MongoClient.connect("mongodb://localhost:27017", { useNewUrlParser: true })

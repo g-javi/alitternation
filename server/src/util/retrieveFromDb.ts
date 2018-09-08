@@ -5,24 +5,8 @@ const environment = process.env.NODE_ENV || "development";
 import * as fs from "fs";
 import * as MongoDb from "mongodb";
 
-const MongoClient = MongoDb.MongoClient;
-const ObjectID = MongoDb.ObjectID;
-
 const litterCollectionName = "litterData";
 const userCollectionName = "userData";
-
-MongoClient.connect("mongodb://localhost:27017", { useNewUrlParser: true }, function (err: any, db: MongoDb.MongoClient) {
-    if (err) throw err;
-    console.log("Connected to mongo server");
-
-    const myDb = db.db("myDb");
-
-    // viewAllCollections(myDb);
-
-    // viewAllDocumentsInCollection(myDb, "remainingSteps");
-
-    // db.close();
-});
 
 function viewAllCollections(myDb: MongoDb.Db) {
     myDb.listCollections().toArray(function(err: any, result: any) {

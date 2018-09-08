@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import getConfig from "./util/getConfig";
 import router from "./routes";
 import passport from "passport";
-import {connect} from "./util/database";
+import { connect } from "./util/database";
 require("./util/GoogleAuth");
 const cookieParser = require('cookie-parser');
 const cookieSession = require('cookie-session');
@@ -47,7 +47,7 @@ connect().then(() => {
 
     // Listen on PORT
     app.listen(config.SERVER.PORT);
-   
+
     console.log('Listening on ' + config.SERVER.PORT);
 });
 

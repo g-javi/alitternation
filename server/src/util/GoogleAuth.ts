@@ -4,7 +4,7 @@ import passport from "passport";
 
 import getConfig from "./getConfig";
 const config = getConfig();
-
+import { getDb } from "../util/database";
 import PassportGoogleOAuth from 'passport-google-oauth2'
 const GoogleStrategy = PassportGoogleOAuth.Strategy;
 
@@ -30,17 +30,22 @@ passport.use(new GoogleStrategy({
     callbackURL: config.AUTH.GOOGLE.CALLBACK_URL,
     passReqToCallback: true
 },
-    function (request: any, accessToken: any, refreshToken: any, profile: any, done: any) {
-        // process.nextTick(function () {
-            return done(null, profile);
+    async function (request: any, accessToken: any, refreshToken: any, profile: any, done: any) {
 
-        // });
-        // User.findOrCreate({ googleId: profile.id }, function (err: any, user: any) {
-        //     return done(err, user);
-        // });
+        const db = getDb();
 
+        const result = await db.collection("userData").findOneAndUpdate(
+            { googleId: profile.id },
+            {
+              $setOnInsert: { googleId: profile.id, balance: "0", firstName: profile.name.givenName, lastName:profile.name.familyName },
+            },
+            {
+              returnOriginal: false,
+              upsert: true,
+            }
+          );
 
-        
+        return done(null, result);
 
     }
 ));

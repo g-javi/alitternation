@@ -3,7 +3,7 @@ import LitterController from "./api/LitterController";
 import SurveyController from "./api/SurveyController";
 import BinsController from "./api/BinController";
 import auth from "./auth";
-
+import UserController from "./api/UserController";
 
 const router = express.Router();
 
@@ -34,6 +34,7 @@ router.get('/', (req: any, res) => {
 router.use("/survey", SurveyController);
 router.use("/bins", BinsController);
 router.use("/litter", LitterController);
+router.use("/user", UserController);
 router.use("/auth", auth);
 
 // Simple route middleware to ensure user is authenticated.

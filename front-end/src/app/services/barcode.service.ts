@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BrowserBarcodeReader } from '@zxing/library';
-import { BarcodeComponent } from '../components/barcode/barcode.component';
-import { MatDialog, MatDialogRef } from '@angular/material';
-import { tap } from 'rxjs/operators';
+import { LitterItemsService } from './litter-items.service';
+import { ItemInfoService } from './item-info.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,13 @@ import { tap } from 'rxjs/operators';
 export class BarcodeService {
   private _codeReader: any;
   public _videoDevices: any[];
-  constructor() {
+
+  constructor(
+    private _litterService: LitterItemsService,
+    private _itemInfo: ItemInfoService,
+    private _router: Router,
+
+  ) {
     this._codeReader = new BrowserBarcodeReader();
     this._videoDevices = [];
     this.getDevices();
@@ -22,7 +28,12 @@ export class BarcodeService {
     if (this._videoDevices[0]) {
       this.readBarcode(this._videoDevices[0].id).then(result => {
         // this._codeReader.reset();
-        alert(result);
+        // alert(result);
+        this._litterService.checkBarcode(result).then(response => {
+          this._itemInfo.activeItem = response;
+          // console.log(response);
+          this._router.navigate(['item-detail-info', result]);
+        });
       });
     } else {
       this.getDevices().then(_ => this.openBarcodeDialog());

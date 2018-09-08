@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MediaService } from './services/media.service';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,11 @@ export class AppComponent implements OnInit {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private _media: MediaService) { }
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private _media: MediaService,
+    private _user: UserService
+  ) { }
 
   ngOnInit() {
   }

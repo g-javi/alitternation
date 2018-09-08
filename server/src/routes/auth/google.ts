@@ -10,9 +10,10 @@ google.get('/',
 ));
 
 google.get( '/callback',
-	passport.authenticate( 'google', {
-		successRedirect: "/",
-		failureRedirect: '/login'
-}));
+	passport.authenticate('google', { failureRedirect: "/user-login"}),
+	(req, res) => {
+		res.cookie('user_details', JSON.stringify(req.user));
+		res.redirect("/");
+});
 
 export default google;

@@ -1,6 +1,7 @@
-/// <reference types="googlemaps" />
+/// <reference types='googlemaps' />
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-main',
@@ -10,9 +11,10 @@ import { Router } from "@angular/router";
 export class MainComponent implements OnInit {
   @ViewChild('map') gmapElement: any;
   map: google.maps.Map;
-  
+
   constructor(
     private router: Router,
+    private _user: UserService
   ) { }
 
   ngOnInit() {
@@ -20,7 +22,7 @@ export class MainComponent implements OnInit {
       center: {lat: -27.4698, lng: 153.0251},
       zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
-      gestureHandling: "greedy",
+      gestureHandling: 'greedy',
       disableDefaultUI: true,
     };
 

@@ -1,22 +1,26 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule, MatDialogModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule, MatDialogModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CookieModule } from 'ngx-cookie';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BarcodeComponent } from './components/barcode/barcode.component';
-import { BarcodeService } from './services/barcode.service';
-import { MainComponent } from './components/main/main.component';
 import { ImageCaptureComponent } from './components/image-capture/image-capture.component';
-import { ItemLookupComponent } from './components/item-lookup/item-lookup.component';
 import { ItemDetailInfoComponent } from './components/item-detail-info/item-detail-info.component';
-import { UserSignInComponent } from './components/user-sign-in/user-sign-in.component';
+import { ItemLookupComponent } from './components/item-lookup/item-lookup.component';
+import { MainComponent } from './components/main/main.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { UserSignInComponent } from './components/user-sign-in/user-sign-in.component';
+import { BarcodeService } from './services/barcode.service';
 import { GeoLocationService } from './services/geo-location.service';
 import { ImageRecognitionService } from './services/image-recognition.service';
 import { MediaService } from './services/media.service';
-import { FormsModule } from '@angular/forms';
+import { UserService } from './services/user.service';
+import { LitterItemsService } from './services/litter-items.service';
+import { ItemInfoService } from './services/item-info.service';
 
 @NgModule({
   declarations: [
@@ -40,13 +44,17 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     MatListModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    CookieModule.forRoot()
   ],
   providers: [
     BarcodeService,
     GeoLocationService,
     ImageRecognitionService,
-    MediaService
+    MediaService,
+    UserService,
+    LitterItemsService,
+    ItemInfoService
   ],
   bootstrap: [
     AppComponent

@@ -6,11 +6,13 @@ import { ItemLookupComponent } from './components/item-lookup/item-lookup.compon
 import { ItemDetailInfoComponent } from './components/item-detail-info/item-detail-info.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { UserSignInComponent } from './components/user-sign-in/user-sign-in.component';
+import { UserGuard } from './guards/user.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: MainComponent,
+    pathMatch: 'full'
   },
   {
     path: 'image-capture',
@@ -27,10 +29,15 @@ const routes: Routes = [
   {
     path: 'user-info',
     component: UserInfoComponent,
+    canActivate: [UserGuard]
   },
   {
     path: 'user-sign-in',
     component: UserSignInComponent,
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
 

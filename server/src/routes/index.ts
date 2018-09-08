@@ -8,6 +8,7 @@ import UserController from "./api/UserController";
 
 const router = express.Router();
 
+
 router.get('/', (req: any, res) => {
     // if (req.session.token) {
     //     res.cookie('token', req.session.token);

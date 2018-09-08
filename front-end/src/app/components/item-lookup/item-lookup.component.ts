@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { LitterItemsService } from '../../services/litter-items.service';
 
 @Component({
   selector: 'app-item-lookup',
@@ -8,13 +9,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./item-lookup.component.scss']
 })
 export class ItemLookupComponent implements OnInit {
-  private items: { id: number, label: string }[] = [];
-  private searchQuery: string = "";
+  private items: { _id: number, description: string }[] = [];
+  private searchQuery = '';
 
   constructor(
     private readonly location: Location,
     private readonly router: Router,
-  ) { }
+    public _itemService: LitterItemsService
+  ) {
+    this._itemService.list.subscribe(data => {
+      this.items = data;
+    });
+  }
 
   get filteredItems() {
     const str = this.searchQuery.trim().toLowerCase();
@@ -23,17 +29,12 @@ export class ItemLookupComponent implements OnInit {
       return this.items;
     }
 
-    return this.items.filter(item => item.label.toLowerCase().indexOf(str) !== -1);
+    return this.items.filter(item => item.description.toLowerCase().indexOf(str) !== -1);
   }
 
   ngOnInit() {
     // TODO: Temporarily populating data
-    for (let i = 0; i < 100; ++i) {
-      this.items.push({
-        id: i,
-        label: `item${i}`,
-      });
-    }
+    this._itemService.updateItemList();
   }
 
   goBack() {
@@ -41,6 +42,6 @@ export class ItemLookupComponent implements OnInit {
   }
 
   goToItem(itemId: number) {
-    this.router.navigate(["/item-detail-info/", itemId]);
+    this.router.navigate(['/item-detail-info/', itemId]);
   }
 }

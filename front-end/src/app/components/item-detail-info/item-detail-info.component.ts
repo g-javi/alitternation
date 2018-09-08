@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { ItemInfoService } from '../../services/item-info.service';
 
 @Component({
   selector: 'app-item-detail-info',
@@ -14,6 +15,7 @@ export class ItemDetailInfoComponent implements OnInit {
   constructor(
     private readonly location: Location,
     private readonly route: ActivatedRoute,
+    public _itemInfo: ItemInfoService,
   ) { }
 
   ngOnInit() {
@@ -22,10 +24,6 @@ export class ItemDetailInfoComponent implements OnInit {
 
        // TODO: Fetch item info
     });
-  }
-
-  ngOnDestroy() {
-    this.routeSubscription.unsubscribe();
   }
 
   goBack() {

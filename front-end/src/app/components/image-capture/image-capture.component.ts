@@ -4,6 +4,7 @@ import { MediaService } from '../../services/media.service';
 import { ImageRecognitionService } from '../../services/image-recognition.service';
 import { BarcodeService } from '../../services/barcode.service';
 import { BrowserBarcodeReader } from '@zxing/library';
+import { LitterItemsService } from '../../services/litter-items.service';
 
 interface VisonResponse {
   responses: [
@@ -38,7 +39,7 @@ export class ImageCaptureComponent implements OnInit, AfterViewInit {
     private _media: MediaService,
     private _barcode: BarcodeService,
     private _vision: ImageRecognitionService,
-    private readonly location: Location,
+    private readonly location: Location
   ) { }
 
   ngOnInit() {

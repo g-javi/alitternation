@@ -10,8 +10,17 @@
     </div>
   </div>
   
-  <div id="user-info" class="translucent-bg">
-      <span>User</span>
-      <span>$0.00</span>
+  <div id="user-info" class="translucent-bg" *ngIf="_user._currentUser | async as user ;else noLogin">
+    <img [src]="user?.profile.value" >
+    <span>{{ user?.firstName }}</span>
+    <span>${{ user.balance }}</span>
+  </div>
+
+  <ng-template #noLogin>
+    <div id="user-info" class="translucent-bg">
+      <span></span>
+      <span></span>
     </div>
+  </ng-template>
+
 </div>

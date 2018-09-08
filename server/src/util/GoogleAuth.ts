@@ -46,8 +46,8 @@ passport.use(new GoogleStrategy({
           );
 
         request.user = result.value;
+        request.user.profile = profile.photos[0];
         return done(null, result.value);
-
     }
 ));
 

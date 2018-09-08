@@ -1,18 +1,11 @@
 import * as fs from "fs";
 import { MongoClient, Db } from "mongodb";
 
-// const data = [
-//     "bins",
-//     "barcodes",
-//     "instructions",
-//     "litter",
-//     "resourceRecoveryCentres",
-//     "survey",
-//     "users"
-// ];
-
 const data = [
-    "instructions"
+    "barcodes",
+    "instructions",
+    "litter",
+    "users"
 ];
 
 MongoClient.connect("mongodb://localhost:27017", { useNewUrlParser: true }, async function (err, db) {

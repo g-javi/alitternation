@@ -1,0 +1,21 @@
+.top-bar {
+    button {
+        background: transparent;
+        border: 0;
+        margin: 0;
+
+        &:hover,
+        &:focus {
+            background: rgba(255,255,255,0.3);
+        }
+    }
+}
+
+.credit-owing-message {
+    text-align: center;
+
+    .credit-amount {
+        font-size: 3rem;
+        font-weight: 100;
+    }
+}

@@ -1,7 +1,6 @@
 /// <reference types="googlemaps" />
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from "@angular/router";
-import GeolocationMarker from "geolocation-marker";
 
 @Component({
   selector: 'app-main',
@@ -36,8 +35,6 @@ export class MainComponent implements OnInit {
         };
 
         map.setCenter(pos);
-        // TODO: not working???
-        new GeolocationMarker(map);
       });
     }
 

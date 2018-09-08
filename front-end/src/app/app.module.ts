@@ -7,11 +7,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BarcodeComponent } from './components/barcode/barcode.component';
 import { BarcodeService } from './services/barcode.service';
+import { MainComponent } from './components/main/main.component';
+import { ImageCaptureComponent } from './components/image-capture/image-capture.component';
+import { ItemLookupComponent } from './components/item-lookup/item-lookup.component';
+import { ItemDetailInfoComponent } from './components/item-detail-info/item-detail-info.component';
+import { UserSignInComponent } from './components/user-sign-in/user-sign-in.component';
+import { UserInfoComponent } from './components/user-info/user-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BarcodeComponent
+    BarcodeComponent,
+    MainComponent,
+    ImageCaptureComponent,
+    ItemLookupComponent,
+    ItemDetailInfoComponent,
+    UserSignInComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +44,7 @@ import { BarcodeService } from './services/barcode.service';
     AppComponent
   ],
   entryComponents: [
-    BarcodeComponent
+    MainComponent
   ]
 })
 export class AppModule { }

@@ -26,6 +26,7 @@ export class BarcodeService {
     });
     const openSub = this._dialogRef.afterOpen().subscribe(_  => {
       this.readBarcode(this._videoDevices[0].id).then(result => {
+        this._codeReader.reset();
         alert(result);
       });
     });

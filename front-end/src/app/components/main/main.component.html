@@ -1,16 +1,17 @@
-<div class="full-screen-wrapper">
-  <div id="map" class="full-screen-wrapper"></div>
-
-  <div id="user-info" class="translucent-bg">
-    <span>User</span>
-    <span>$0.00</span>
-  </div>
-
-  <div id="action-buttons" class="translucent-bg">
-    <div class="cta-question">Found litter?</div>
-    <div class="button-container">
-      <button (click)="goToImageCapture()">Capture</button>
-      <button (click)="goToItemLookup()">Lookup</button>
+<div class="full-screen-wrapper">  
+  <div id="map-button-container" class="full-screen-wrapper">
+    <div #map id="map"></div>
+    <div id="action-buttons" class="translucent-bg">
+      <div class="cta-question">Found litter?</div>
+      <div class="button-container">
+        <button (click)="goToImageCapture()">Capture it</button>
+        <button (click)="goToItemLookup()">Look it up</button>
+      </div>
     </div>
   </div>
+  
+  <div id="user-info" class="translucent-bg">
+      <span>User</span>
+      <span>$0.00</span>
+    </div>
 </div>

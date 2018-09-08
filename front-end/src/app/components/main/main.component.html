@@ -11,15 +11,13 @@
   </div>
   
   <div id="user-info" class="translucent-bg" *ngIf="_user._currentUser | async as user ;else noLogin">
-    <img [src]="user?.profile.value" >
-    <span>{{ user?.firstName }}</span>
-    <span>${{ user.balance }}</span>
+    <img [src]="user.profile.value">
+    <span>{{ (user.balance / 100) | currency:'AUD':'$' }}</span>
   </div>
 
   <ng-template #noLogin>
     <div id="user-info" class="translucent-bg">
-      <span></span>
-      <span></span>
+        <button id="sign-in" (click)="goToSignIn()">Sign in to start collecting<br>Container Refund credit</button>
     </div>
   </ng-template>
 

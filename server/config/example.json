@@ -1,0 +1,8 @@
+{
+    "DATABASE": {
+        "URI": "DATABASE_URI"
+    },
+    "SERVER": {
+        "PORT": 8080
+    }
+}

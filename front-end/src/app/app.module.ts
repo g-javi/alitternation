@@ -16,6 +16,7 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
 import { GeoLocationService } from './services/geo-location.service';
 import { ImageRecognitionService } from './services/image-recognition.service';
 import { MediaService } from './services/media.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MediaService } from './services/media.service';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule
   ],
   providers: [
     BarcodeService,

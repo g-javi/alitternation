@@ -9,11 +9,22 @@ import { Router } from '@angular/router';
 })
 export class ItemLookupComponent implements OnInit {
   private items: { id: number, label: string }[] = [];
+  private searchQuery: string = "";
 
   constructor(
     private readonly location: Location,
     private readonly router: Router,
   ) { }
+
+  get filteredItems() {
+    const str = this.searchQuery.trim().toLowerCase();
+
+    if (str.length === 0) {
+      return this.items;
+    }
+
+    return this.items.filter(item => item.label.toLowerCase().indexOf(str) !== -1);
+  }
 
   ngOnInit() {
     // TODO: Temporarily populating data

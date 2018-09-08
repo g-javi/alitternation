@@ -3,8 +3,10 @@
   <span>Item lookup</span>
 </div>
 
+<input type="text" id="search-field" [(ngModel)]="searchQuery" />
+
 <ul id="item-list">
-  <li *ngFor="let item of items" (click)="goToItem(item.id)">
+  <li *ngFor="let item of filteredItems" (click)="goToItem(item.id)">
     {{ item.label }}
   </li>
 </ul>

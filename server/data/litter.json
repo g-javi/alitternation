@@ -1,0 +1,25 @@
+{
+    "item1": {
+        "barcode": [12345678],
+        "description": "A glass bottle",
+        "title": "Coca-cola Bottle",
+        "recyclable": true,
+        "tags": ["glass", "bottle"],
+        "disposalMethod": "glass"
+    },
+    "item2": {
+        "barcode": [12345678, 234567876],
+        "description": "A plastic bottle",
+        "title": "Water Bottle",
+        "recyclable": true,
+        "tags": ["plastic", "bottle"],
+        "disposalMethod": "plastic"
+    },
+    "item3": {
+        "description": "A pizza box",
+        "title": "Domino's pizza",
+        "recyclable": true,
+        "tags": ["pizza", "box"],
+        "disposalMethod": "pizza"
+    }
+}

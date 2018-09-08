@@ -1,0 +1,14 @@
+{
+    "username1": {
+        "email": "sdhjs@gmail.com",
+        "balance": 250,
+        "firstName": "John",
+        "lastName": "Apple"
+    },
+    "username2": {
+        "email": "abc@gmail.com",
+        "balance": 150,
+        "firstName": "Bob",
+        "lastName": "S"
+    }
+}

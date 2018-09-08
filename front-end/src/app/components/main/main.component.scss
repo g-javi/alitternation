@@ -1,5 +1,5 @@
 #map {
-    background: lightseagreen;
+    background: #e7e7e7;
 }
 
 #user-info {
@@ -11,16 +11,25 @@
     display: flex;
     justify-content: space-between;
 
-    padding: 0.3rem;
+    padding: 1rem 0.5rem;
+    color: #fff;
+}
+
+#map-button-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#map {
+    flex-grow: 1;
 }
 
 #action-buttons {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    flex-shrink: 0;
+    flex-grow: 0;
 
     text-align: center;
+    color: #fff;
 
     .cta-question {
         padding: 0.3rem;
@@ -42,7 +51,7 @@
             padding: 0;
 
             & + button {
-                border-left: 1px solid rgba(0,0,0,0.2);
+                border-left: 1px solid rgba(255,255,255,0.1);
             }
 
             &:hover,
@@ -54,5 +63,5 @@
 }
 
 .translucent-bg {
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.9);
 }

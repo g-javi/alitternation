@@ -1,0 +1,14 @@
+{
+    "username1": {
+        "googleId": "123456gfdsdf",
+        "balance": 250,
+        "firstName": "John",
+        "lastName": "Apple"
+    },
+    "username2": {
+        "googleId": "wetry7545er",
+        "balance": 150,
+        "firstName": "Bob",
+        "lastName": "S"
+    }
+}

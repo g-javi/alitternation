@@ -1,0 +1,71 @@
+{
+    "pocky": {
+        "barcode": 4901005510340,
+        "description": "Pocky",
+        "title": "Pocky",
+        "recyclable": true,
+        "tags": ["cardboard", "food"],
+        "disposalMethod": "cardboard"
+    },
+    "coolRidgeWater": {
+        "barcode": 9315596302119,
+        "description": "A plastic bottle",
+        "title": "Water Bottle",
+        "recyclable": true,
+        "tags": ["plastic", "bottle"],
+        "disposalMethod": "plastic"
+    },
+    "lemonadeCan": {
+        "barcode": 9315596002750,
+        "description": "Lemonade Can",
+        "title": "Lemonade Can",
+        "recyclable": true,
+        "tags": ["aluminium", "can"],
+        "disposalMethod": "metal"
+    },
+    "cokeBottle": {
+        "barcode": 9300675075329,
+        "description": "Coca Cola Ginger",
+        "title": "Coca Cola Ginger",
+        "recyclable": true,
+        "tags": ["plastic", "bottle"],
+        "disposalMethod": "plastic"
+    },
+    "sanPellegrino": {
+        "barcode": 8002270018794,
+        "description": "San Pellegrino Limonata",
+        "title": "San Pellegrino Limonata",
+        "recyclable": true,
+        "tags": ["glass", "bottle"],
+        "disposalMethod": "glass"
+    },
+    "ramune": {
+        "barcode": 9317523346418,
+        "description": "Kimura Ramune Drink",
+        "title": "Kimura Ramune Drink",
+        "recyclable": true,
+        "tags": ["glass", "bottle"],
+        "disposalMethod": "glass"
+    },
+    "item3": {
+        "description": "A pizza box",
+        "title": "Domino's pizza",
+        "recyclable": true,
+        "tags": ["pizza", "box", "cardboard"],
+        "disposalMethod": "foodWaste"
+    },
+    "item4": {
+        "description": "Milk carton",
+        "title": "Milk carton",
+        "recyclable": true,
+        "tags": ["cardboard", "bottle"],
+        "disposalMethod": "cardboard"
+    },
+    "item1": {
+        "description": "A glass bottle",
+        "title": "Coca-cola Bottle",
+        "recyclable": true,
+        "tags": ["glass", "bottle"],
+        "disposalMethod": "glass"
+    }
+}

@@ -8,7 +8,8 @@
     "AUTH": {
         "GOOGLE": {
             "CLIENT_ID" : "CLIENT_ID_HERE",
-            "SECRET": "SECRET"
+            "SECRET": "SECRET",
+            "CALLBACK_URL" : "CALLBACK_URL_HERE"
         }
     }
 }

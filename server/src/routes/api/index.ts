@@ -2,6 +2,8 @@ import express from "express";
 
 const api = express.Router();
 
+const routes = 
+
 api.get("/itemList", (req, res, next) => {
 
 })

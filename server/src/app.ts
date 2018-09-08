@@ -2,6 +2,11 @@ import express from "express";
 import bodyParser from "body-parser";
 import getConfig from "./util/getConfig";
 import router from "./routes";
+import passport from "passport";
+
+require("./util/GoogleAuth");
+const cookieParser = require('cookie-parser');
+const cookieSession = require('cookie-session');
 
 
 const config = getConfig();
@@ -15,12 +20,28 @@ const PORT = config.SERVER.PORT;
 // Initialize as express application
 const app = express();
 
+app.use(cookieSession({
+    name: 'session',
+    keys: ['123']
+}));
+
+
+app.use(cookieParser());
+
+
 // parse request body
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 // Use router
 app.use(router);
-
 
 // Listen on PORT
 app.listen(config.SERVER.PORT);

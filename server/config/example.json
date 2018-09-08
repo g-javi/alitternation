@@ -4,5 +4,11 @@
     },
     "SERVER": {
         "PORT": 8080
+    },
+    "AUTH": {
+        "GOOGLE": {
+            "CLIENT_ID" : "CLIENT_ID_HERE",
+            "SECRET": "SECRET"
+        }
     }
 }

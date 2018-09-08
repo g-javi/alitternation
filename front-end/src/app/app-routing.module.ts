@@ -9,27 +9,27 @@ import { UserSignInComponent } from './components/user-sign-in/user-sign-in.comp
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: MainComponent,
   },
   {
-    path: "image-capture",
+    path: 'image-capture',
     component: ImageCaptureComponent,
   },
   {
-    path: "item-lookup",
+    path: 'item-lookup',
     component: ItemLookupComponent,
   },
   {
-    path: "item-detail-info/:id",
+    path: 'item-detail-info/:id',
     component: ItemDetailInfoComponent,
   },
   {
-    path: "user-info",
+    path: 'user-info',
     component: UserInfoComponent,
   },
   {
-    path: "user-sign-in",
+    path: 'user-sign-in',
     component: UserSignInComponent,
   }
 ];

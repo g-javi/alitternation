@@ -13,6 +13,9 @@ import { ItemLookupComponent } from './components/item-lookup/item-lookup.compon
 import { ItemDetailInfoComponent } from './components/item-detail-info/item-detail-info.component';
 import { UserSignInComponent } from './components/user-sign-in/user-sign-in.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { GeoLocationService } from './services/geo-location.service';
+import { ImageRecognitionService } from './services/image-recognition.service';
+import { MediaService } from './services/media.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     MatDialogModule
   ],
   providers: [
-    BarcodeService
+    BarcodeService,
+    GeoLocationService,
+    ImageRecognitionService,
+    MediaService
   ],
   bootstrap: [
     AppComponent

@@ -1,19 +1,27 @@
 import { Injectable } from '@angular/core';
-import { MediaInputDevice } from '../models/media.model';
 import { BehaviorSubject } from 'rxjs';
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class MediaService {
+  private readonly VIDEO_PIXELS = 224;
   private _mediaDevicesSubject: BehaviorSubject<MediaDeviceInfo[]>;
   private _defaultStream: BehaviorSubject<MediaStream>;
+  private _snapShotCanvas: HTMLCanvasElement;
+  private _videoElement: HTMLVideoElement;
+  private _aspectRatio: number;
+
   constructor() {
+    this._snapShotCanvas = document.createElement('canvas');
     this.getStream();
     this._mediaDevicesSubject = new BehaviorSubject<MediaDeviceInfo[]>([]);
     this._defaultStream = new BehaviorSubject<MediaStream>(null);
     this.updateMediaDeviceList();
+  }
+
+  set videoElement(element: HTMLVideoElement) {
+    this._videoElement = element;
   }
 
   get mediaDevices() {
@@ -43,5 +51,41 @@ export class MediaService {
       console.warn(e);
       alert('Unable to access the Camera!');
     });
+  }
+
+  setupVideoDimensions(width: number, height: number) {
+    this._aspectRatio = width / height;
+
+    if (width >= height) {
+      this._videoElement.height = this.VIDEO_PIXELS;
+      this._videoElement.width = this._aspectRatio * this.VIDEO_PIXELS;
+    } else {
+      this._videoElement.width = this.VIDEO_PIXELS;
+      this._videoElement.height = this.VIDEO_PIXELS / this._aspectRatio;
+    }
+  }
+
+  pauseMedia() {
+    if (this._videoElement.played) {
+      this._videoElement.pause();
+    }
+  }
+
+  unPauseMedia() {
+    if (this._videoElement.paused) {
+      this._videoElement.play();
+    }
+  }
+
+  snapshot() {
+    console.log(this._videoElement.height);
+    console.log(this._videoElement.width);
+    this._snapShotCanvas.height = this._videoElement.height;
+    this._snapShotCanvas.width = this._videoElement.width;
+    const ctx = this._snapShotCanvas.getContext('2d');
+    ctx.drawImage(this._videoElement, 0, 0, this._snapShotCanvas.width,
+      this._snapShotCanvas.height);
+    return this._snapShotCanvas.toDataURL().replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
+    // .toDataURL('image/png');
   }
 }

@@ -5,8 +5,8 @@ const environment = process.env.NODE_ENV || "development";
 import * as fs from "fs";
 import * as MongoDb from "mongodb";
 
-const litterCollectionName = "litterData";
-const userCollectionName = "userData";
+const litterCollectionName = "litter";
+const userCollectionName = "users";
 
 export function viewAllCollections(myDb: MongoDb.Db) {
     myDb.listCollections().toArray(function(err: any, result: any) {

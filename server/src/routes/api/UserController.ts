@@ -7,7 +7,7 @@ const api = express.Router();
 api.get("/balance/:googleId", (req, res, next) => {
     const googleId = req.params.googleId;
     
-    const userDb = getDb().collection("userData");
+    const userDb = getDb().collection("users");
     userDb.find({"googleId": googleId}).toArray(function(err, result) {
         const balance = result[0].balance;
         const userBalance = {
@@ -23,7 +23,7 @@ api.post("/balance/:googleId/:increaseAmount", (req, res, next) => {
     const googleId = req.params.googleId;
     const balanceIncrease = req.params.increaseAmount;
 
-    const userDb = getDb().collection("userData");
+    const userDb = getDb().collection("users");
 
     userDb.find({"googleId": googleId}).toArray(function(err, result) {
         const newBalance = parseInt(result[0].balance) + parseInt(balanceIncrease);

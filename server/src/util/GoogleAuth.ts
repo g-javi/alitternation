@@ -34,7 +34,7 @@ passport.use(new GoogleStrategy({
 
         const db = getDb();
 
-        const result = await db.collection("userData").findOneAndUpdate(
+        const result = await db.collection("users").findOneAndUpdate(
             { googleId: profile.id },
             {
               $setOnInsert: { googleId: profile.id, balance: "0", firstName: profile.name.givenName, lastName:profile.name.familyName },

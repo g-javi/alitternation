@@ -8,7 +8,7 @@ import * as MongoDb from "mongodb";
 const litterCollectionName = "litterData";
 const userCollectionName = "userData";
 
-function viewAllCollections(myDb: MongoDb.Db) {
+export function viewAllCollections(myDb: MongoDb.Db) {
     myDb.listCollections().toArray(function(err: any, result: any) {
         if (err) throw err;
         console.log("ALL COLLECTIONS");
@@ -16,7 +16,7 @@ function viewAllCollections(myDb: MongoDb.Db) {
     });
 }
 
-function viewAllDocumentsInCollection(myDb: MongoDb.Db, collectionName: string) {
+export function viewAllDocumentsInCollection(myDb: MongoDb.Db, collectionName: string) {
     myDb.collection(collectionName).find({}).toArray(function(err, result) {
         if (err) throw err;
         console.log("ALL DOCUMENTS IN", collectionName);
@@ -24,41 +24,44 @@ function viewAllDocumentsInCollection(myDb: MongoDb.Db, collectionName: string) 
     });
 }
 
-function createNewCollection(myDb: MongoDb.Db, collectionName: string) {
+export function createNewCollection(myDb: MongoDb.Db, collectionName: string) {
     myDb.createCollection(collectionName, function(err, res) {
         if (err) throw err;
         console.log("Collection for " + collectionName + " created");
     });
 }
 
-function addCollectionEntry(myDb: MongoDb.Db, collectionName: string, data: any) {
+export function addCollectionEntry(myDb: MongoDb.Db, collectionName: string, data: any) {
     myDb.collection(collectionName).insertOne(data, function(err, res) {
         if (err) throw err;
         console.log("Collection entry inserted");
     });
 }
 
-function addAllLitterData(myDb: MongoDb.Db) {
-    const litterData = JSON.parse(fs.readFileSync("../../data/litter.json", "utf8"));
-    for (let i = 0; i < litterData.length; i++) {
-        myDb.collection(litterCollectionName).insertOne(litterData[i], function(err, res) {
+export function addAllLitterData(myDb: MongoDb.Db) {
+    const filePath = __dirname + "/../../data/litter.json";
+    const litterData = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    for (const litter in litterData) {
+        myDb.collection(litterCollectionName).insertOne(litterData[litter], function(err, res) {
             if (err) throw err;
         });
-        console.log("All litter data added");
     }
+    console.log("All litter data added");
 }
 
-function addAllUserData(myDb: MongoDb.Db) {
-    const userData = JSON.parse(fs.readFileSync("../../data/users.json", "utf8"));
-    for (let i = 0; i < userData.length; i++) {
-        myDb.collection(userCollectionName).insertOne(userData[i], function(err, res) {
+export function addAllUserData(myDb: MongoDb.Db) {
+    console.log("addAllUserData");
+    const filePath = __dirname + "/../../data/users.json";
+    const userData = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    for (const user in userData) {
+        myDb.collection(userCollectionName).insertOne(userData[user], function(err, res) {
             if (err) throw err;
         });
-        console.log("All user data added");
     }
+    console.log("All user data added");
 }
 
-function findUser(myDb: MongoDb.Db, usernames: string[]) {
+export function findUser(myDb: MongoDb.Db, usernames: string[]) {
     const results: any = [];
     for (let i = 0; i < usernames.length; i++) {
         const query = { username: usernames[i] };
@@ -72,7 +75,7 @@ function findUser(myDb: MongoDb.Db, usernames: string[]) {
     return results;
 }
 
-function findLitter(myDb: MongoDb.Db, tags: string[]) {
+export function findLitter(myDb: MongoDb.Db, tags: string[]) {
     const results: any = [];
     for (let i = 0; i < tags.length; i++) {
         const query = { tags: tags[i] };

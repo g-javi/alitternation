@@ -1,3 +1,15 @@
-<p>
-  image-capture works!
-</p>
+<div class="full-screen-wrapper">
+  <div id="image-feed" class="full-screen-wrapper"></div>
+
+  <div class="top-bar translucent-bg">
+    <button (click)="goBack()">&lt;-</button>
+  </div>
+
+  <div id="info-note">
+    <span>Scan or capture an item of litter</span>
+  </div>
+
+  <div id="capture-control">
+    <button (click)="captureImage()">Capture</button>
+  </div>
+</div>

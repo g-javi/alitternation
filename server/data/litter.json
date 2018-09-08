@@ -19,7 +19,15 @@
         "description": "A pizza box",
         "title": "Domino's pizza",
         "recyclable": true,
-        "tags": ["pizza", "box"],
-        "disposalMethod": "pizza"
+        "tags": ["pizza", "box", "cardboard"],
+        "disposalMethod": "foodWaste"
+    },
+    "item4": {
+        "barcode": [9098753],
+        "description": "Milk carton",
+        "title": "Milk carton",
+        "recyclable": true,
+        "tags": ["cardboard", "bottle"],
+        "disposalMethod": "cardboard"
     }
 }

@@ -1,3 +1,4 @@
 export interface Instruction {
-    instruction: string;
+    info: string;
+    instructions: string;
 }

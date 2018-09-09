@@ -1,5 +1,5 @@
 /// <reference types='googlemaps' />
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { MapService } from '../../services/map.service';
@@ -9,7 +9,7 @@ import { MapService } from '../../services/map.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, AfterViewInit {
   @ViewChild('map') gmapElement: any;
   map: google.maps.Map;
   infoWindow: any;
@@ -19,7 +19,13 @@ export class MainComponent implements OnInit {
     private _map: MapService
   ) { }
 
+  ngAfterViewInit() {
+    this._user.updateBalance();
+  }
+
   ngOnInit() {
+
+    // this._user.updateBalance();
     const mapProp: google.maps.MapOptions = {
       center: {lat: -27.4698, lng: 153.0251},
       zoom: 15,
@@ -41,7 +47,6 @@ export class MainComponent implements OnInit {
         map.setCenter(pos);
       });
     }
-    
 
     this._map.getHistoricalSurvey().then((_: any) => {
       _.forEach(area => {

@@ -46,7 +46,7 @@ export class ItemDetailInfoComponent implements OnInit {
 
   reportItem() {
     const itemInfo = this._itemInfo.value;
-    const itemDepositable = !!itemInfo.information.depositable;
+    const itemDepositable = itemInfo.information ? !!itemInfo.information.depositable : false;
 
     const itemId = itemInfo._id;
     let latitude = null;
@@ -65,7 +65,7 @@ export class ItemDetailInfoComponent implements OnInit {
       })
       .then(() => {
         $.post({
-          url: "/litter/record",
+          url: "https://alitternation.com/litter/record",
           data: {
             itemId,
             latitude,
@@ -84,7 +84,7 @@ export class ItemDetailInfoComponent implements OnInit {
             const googleId = user.googleId;
 
             return $.post({
-              url: `/user/balance/${googleId}/10`,
+              url: `https://alitternation.com/user/balance/${googleId}/10`,
             });
           })
           .then(() => {

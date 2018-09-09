@@ -31,6 +31,7 @@ export class UserService {
         currentValues.balance = _.balance;
         // console.log(_);
         this._currentUser.next(currentValues);
+        resolve(true);
       });
     });
   }

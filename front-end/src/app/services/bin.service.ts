@@ -5,7 +5,7 @@ import * as $ from 'jquery';
   providedIn: 'root'
 })
 export class BinService {
-  private readonly SERVER_ENDPOINT = 'http://localhost:8080/';
+  private readonly SERVER_ENDPOINT = 'https://alitternation.com/';
   constructor() { }
 
   getBins(): Promise<any[]> {

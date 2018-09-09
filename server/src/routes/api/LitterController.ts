@@ -9,7 +9,16 @@ const litter = express.Router();
 litter.get("/items/:id", async (req, res, next) => {
     const litter = await getDb().collection("litter").find().toArray();
     const item = litter.find((item: any) => item._id == req.params.id);
+
+    const barcodes = await getDb().collection("barcodes").find().toArray();
+    const barcodeInformation = barcodes.find((barcodeItem) => barcodeItem.barcode == item.barcode);
     
+    const disposalInstructions = await getDb().collection("instructions").find().toArray();
+    const disposalInstructionInfo = disposalInstructions.find(x => x.material === item.disposalMethod);
+
+    item.information = barcodeInformation;
+    item.disposalInstruction = disposalInstructionInfo;
+
     if(item) {
         res.json(item)
     } else {
@@ -32,7 +41,11 @@ litter.get("/barcode/:barcodeNumber", async (req, res, next) => {
     const barcodes = await getDb().collection("barcodes").find().toArray();
     const barcodeInformation = barcodes.find((barcodeItem) => barcodeItem.barcode == item.barcode);
     
+    const disposalInstructions = await getDb().collection("instructions").find().toArray();
+    const disposalInstructionInfo = disposalInstructions.find(x => x.material === item.disposalMethod);
+
     item.information = barcodeInformation;
+    item.disposalInstruction = disposalInstructionInfo;
     
     if(item) {
         res.json(item);

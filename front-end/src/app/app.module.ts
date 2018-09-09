@@ -13,7 +13,6 @@ import { ItemDetailInfoComponent } from './components/item-detail-info/item-deta
 import { ItemLookupComponent } from './components/item-lookup/item-lookup.component';
 import { MainComponent } from './components/main/main.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
-import { UserSignInComponent } from './components/user-sign-in/user-sign-in.component';
 import { BarcodeService } from './services/barcode.service';
 import { GeoLocationService } from './services/geo-location.service';
 import { ImageRecognitionService } from './services/image-recognition.service';
@@ -30,7 +29,6 @@ import { ItemInfoService } from './services/item-info.service';
     ImageCaptureComponent,
     ItemLookupComponent,
     ItemDetailInfoComponent,
-    UserSignInComponent,
     UserInfoComponent
   ],
   imports: [

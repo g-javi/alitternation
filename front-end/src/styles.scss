@@ -54,6 +54,22 @@ input, button {
     }
 }
 
+.back-button {
+    margin: 0.3rem;
+    width: 2rem;
+    height: 2rem;
+    background: rgba(255,255,255,0.3);
+    border: 0;
+    
+    &::before {
+        content: "<";
+    }
+
+    &:hover,
+    &:focus {
+        background: rgba(255,255,255,0.6);
+    }
+}
 
 .map-popup {
     font-size: 1em;

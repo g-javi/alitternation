@@ -1,6 +1,6 @@
 <div class="top-bar sticky">
-  <button (click)="goBack()">&lt;-</button>
-  <span *ngIf="user$ | async as user">{{user?.firstName}} {{user?.lastName}}</span>
+    <button class="back-button" (click)="goBack()"></button>
+    <span *ngIf="user$ | async as user">{{user?.firstName}} {{user?.lastName}}</span>
 </div>
 
 <div class="credit-owing-message">

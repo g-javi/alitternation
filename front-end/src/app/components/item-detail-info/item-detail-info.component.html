@@ -1,6 +1,6 @@
 <div class="top-bar sticky">
-  <button (click)="goBack()">&lt;-</button>
-  <span *ngIf="itemInfo | async as info">{{ info?.title }}</span>
+    <button class="back-button" (click)="goBack()"></button>
+    <span *ngIf="itemInfo | async as info">{{ info?.title }}</span>
 </div>
 
 <div id="item-info">
@@ -14,6 +14,6 @@
   <a [routerLink]="['/bin-map']">Find your nearest bin</a>
 
   <p>
-    <button id="report-button" (click)="reportItem()">Report/Report+10c</button>
+    <button id="report-button" (click)="reportItem()">{{ reportItemTextValue }}</button>
   </p>
 </div>

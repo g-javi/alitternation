@@ -1,9 +1,9 @@
 <div class="top-bar sticky">
-  <button (click)="goBack()">&lt;-</button>
-  <span>Item lookup</span>
+    <button class="back-button" (click)="goBack()"></button>
+    <span>Item lookup</span>
 </div>
 
-<input type="text" id="search-field" [(ngModel)]="searchQuery" />
+<input type="text" id="search-field" placeholder="Search..." [(ngModel)]="searchQuery" />
 
 <ul id="item-list">
   <li *ngFor="let item of filteredItems" (click)="goToItem(item._id)">

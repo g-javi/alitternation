@@ -9,13 +9,18 @@
     right: 0;
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: flex-end;
 
     height: 4rem;
 
     padding: 1rem 0.5rem;
     color: #fff;
+
+    background-image: url(../../../assets/alitternation_wordmark_white_path.svg);
+    background-size: 13rem;
+    background-position: 0.5rem center;
+    background-repeat: no-repeat;
 }
 
 #sign-in {

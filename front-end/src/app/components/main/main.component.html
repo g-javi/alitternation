@@ -2,7 +2,7 @@
   <div id="map-button-container" class="full-screen-wrapper">
     <div #map id="map"></div>
     <div id="action-buttons" class="translucent-bg">
-      <div class="cta-question">Found litter?</div>
+      <div class="cta-question">Found litter? Not sure how to bin your item?</div>
       <div class="button-container">
         <button (click)="goToImageCapture()">Capture it</button>
         <button (click)="goToItemLookup()">Look it up</button>
@@ -11,10 +11,10 @@
   </div>
   
   <div id="user-info" class="translucent-bg" *ngIf="_user._currentUser | async as user ;else noLogin">
+    <span>{{ (user.balance / 100) | currency:'AUD':'$' }}&nbsp;</span>
     <a [routerLink]="['/user-info']">
       <img [src]="user.profile.value">
     </a>
-    <span >{{ (user.balance / 100) | currency:'AUD':'$' }}</span>
   </div>
 
   <ng-template #noLogin>

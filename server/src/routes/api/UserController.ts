@@ -19,7 +19,6 @@ api.get("/balance/:googleId", (req, res, next) => {
 });
 
 api.post("/balance/:googleId/:increaseAmount", (req, res, next) => {
-    console.log("post req");
     const googleId = req.params.googleId;
     const balanceIncrease = req.params.increaseAmount;
 
@@ -36,5 +35,18 @@ api.post("/balance/:googleId/:increaseAmount", (req, res, next) => {
     });    
 });
 
-export default api;
+api.post("/clear/:googleId/", (req, res, next) => {
+    const googleId = req.params.googleId;
+    const userDb = getDb().collection("users");
+    userDb.find({"googleId": googleId}).toArray(function(err, result) {
+        const newBalance = 0;
+        userDb.updateOne({"googleId": googleId}, {
+            $set: {balance: newBalance},
+            $currentDate: { lastModified: true }
+        }, function(err, result) {            
+            res.send({message: "Balance cleared for " + googleId});
+        });
+    });
+});
 
+export default api;

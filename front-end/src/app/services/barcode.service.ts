@@ -25,11 +25,17 @@ export class BarcodeService {
   }
 
   openBarcodeDialog() {
+    this._codeReader = new BrowserBarcodeReader();
     if (this._videoDevices[0]) {
       this.readBarcode(this._videoDevices[0].id).then(result => {
         this._litterService.checkBarcode(result).then((response: any) => {
-          this._itemInfo.activeItem = response;
-          this._router.navigate(['item-detail-info', response._id]);
+          if (!!response) {
+            this._itemInfo.activeItem = response;
+            this._router.navigate(['item-detail-info', response._id]);
+          } else {
+            this._router.navigate(['item-lookup']);
+          }
+          this._codeReader.reset();
         });
       });
     } else {

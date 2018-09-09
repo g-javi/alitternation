@@ -8,10 +8,11 @@ export class ImageRecognitionService {
   private readonly API_KEY = 'AIzaSyDfBfS_NamF_ww_lML_t5G8gB5ugguEMy8';
   // tslint:disable-next-line:max-line-length
   private readonly END_POINT = 'https://content-vision.googleapis.com/v1/images:annotate?alt=json&key=AIzaSyDfBfS_NamF_ww_lML_t5G8gB5ugguEMy8';
-
+  public searchResults = [];
   constructor() { }
 
   recognise(imageData: string) {
+    this.searchResults = [];
     return new Promise(resolve => {
       const data = {
         'requests': [

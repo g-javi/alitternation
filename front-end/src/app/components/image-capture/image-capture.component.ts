@@ -5,6 +5,7 @@ import { ImageRecognitionService } from '../../services/image-recognition.servic
 import { BarcodeService } from '../../services/barcode.service';
 import { BrowserBarcodeReader } from '@zxing/library';
 import { LitterItemsService } from '../../services/litter-items.service';
+import { Router } from '@angular/router';
 
 interface VisonResponse {
   responses: [
@@ -39,6 +40,7 @@ export class ImageCaptureComponent implements OnInit, AfterViewInit {
     private _media: MediaService,
     private _barcode: BarcodeService,
     private _vision: ImageRecognitionService,
+    private _router: Router,
     private readonly location: Location
   ) { }
 
@@ -65,14 +67,24 @@ export class ImageCaptureComponent implements OnInit, AfterViewInit {
       console.log(_);
       const result = _.responses[0];
       const matches = [];
-      result.webDetection.bestGuessLabels.map(guess => {
-        matches.push(guess.label);
-      });
-      result.webDetection.webEntities.map(webEntity => {
-        matches.push(webEntity.description);
-      });
+
+      if (!!result && !!result.webDetection) {
+        if (!!result.webDetection.bestGuessLabels) {
+          result.webDetection.bestGuessLabels.map(guess => {
+            matches.push(guess.label);
+          });
+        }
+
+        if (!!result.webDetection.webEntities) {
+          result.webDetection.webEntities.map(webEntity => {
+            matches.push(webEntity.description);
+          });
+        }
+      }
       this._media.unPauseMedia();
       console.log(matches);
+      this._vision.searchResults = matches;
+      this._router.navigate(['item-lookup']);
     });
   }
 

@@ -1,7 +1,16 @@
 import * as fs from "fs";
 import { MongoClient, Db } from "mongodb";
 
-const data = [
+const collectionsToUpdate: any = [];
+
+process.argv.forEach(function (val, index, array) {
+    console.log(index + ': ' + val);
+    if (index >= 2) {
+        collectionsToUpdate.push(val);
+    }
+});
+
+const collections = [
     "barcodes",
     "instructions",
     "litter",
@@ -14,9 +23,14 @@ MongoClient.connect("mongodb://localhost:27017", { useNewUrlParser: true }, asyn
 
     const myDb = db.db("myDb");
 
-    for (let i = 0; i < data.length; i++) {
-        console.log(data[i]);
-        await addCollectionData(myDb, data[i]);
+    for (let i = 0; i < collectionsToUpdate.length; i++) {
+        console.log(collectionsToUpdate[i]);
+        const index = collections.indexOf(collectionsToUpdate[i]);
+        if (index !== -1) {
+            await addCollectionData(myDb, collectionsToUpdate[i]);
+        } else {
+            console.log("Invalid collection name", collectionsToUpdate[i]);
+        }
     }
 
     db.close();
@@ -24,14 +38,14 @@ MongoClient.connect("mongodb://localhost:27017", { useNewUrlParser: true }, asyn
 
 async function addCollectionData(myDb: Db, collectionName: string) {
     const filePath = __dirname + "/../data/" + collectionName + ".json";
-    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    const dataArray = Object.keys(data).map((obj) => data[obj]).map((o) => {o.barcode += ''; return o;});
+    let dataObj = JSON.parse(fs.readFileSync(filePath, "utf8"));
 
-    for (const data in dataArray) {
-        await myDb.collection(collectionName).insertOne(dataArray[data]);
+    if (collectionName === "litter" || collectionName === "barcodes") {
+        dataObj = Object.keys(dataObj).map((obj) => dataObj[obj]).map((o) => {o.barcode += ''; return o;});
+    }
+    console.log(dataObj);
+    for (const data in dataObj) {
+        await myDb.collection(collectionName).insertOne(dataObj[data]);
     }
     console.log("All " + collectionName + " data added.");
 }
-
-
-// "mongoimport --db=myDb --collection=bins bins.json"

@@ -1,6 +1,6 @@
 <div class="top-bar sticky">
-  <button (click)="goBack()">&lt;-</button>
-  <span *ngIf="itemInfo | async as info">{{ info?.title }}</span>
+    <button class="back-button" (click)="goBack()"></button>
+    <span *ngIf="itemInfo | async as info">{{ info?.title }}</span>
 </div>
 
 <div id="item-info">

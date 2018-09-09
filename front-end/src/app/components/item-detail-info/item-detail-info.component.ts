@@ -31,6 +31,18 @@ export class ItemDetailInfoComponent implements OnInit {
     return this._itemInfo.asObservable();
   }
 
+  get reportItemTextValue() {
+    const itemInfo = this._itemInfo.value;
+    const itemDepositable = !!itemInfo.information.depositable;
+    const user = this._userService._currentUser.value;
+
+    if (itemDepositable && user) {
+      return "Report litter and get 10c credit";
+    } else {
+      return "Report litter";
+    }
+  }
+
   ngOnInit() {
     this.routeSubscription = this.route.params.subscribe(params => {
       this.id = params['id'];

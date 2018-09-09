@@ -21,6 +21,7 @@ import { UserService } from './services/user.service';
 import { LitterItemsService } from './services/litter-items.service';
 import { ItemInfoService } from './services/item-info.service';
 import { BinMapComponent } from './components/bin-map/bin-map.component';
+import { NewItemFormComponent } from './components/new-item-form/new-item-form.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { BinMapComponent } from './components/bin-map/bin-map.component';
     ItemLookupComponent,
     ItemDetailInfoComponent,
     UserInfoComponent,
-    BinMapComponent
+    BinMapComponent,
+    NewItemFormComponent
   ],
   imports: [
     BrowserModule,

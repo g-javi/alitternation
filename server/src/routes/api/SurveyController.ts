@@ -5,9 +5,8 @@ import { getDb } from "../../util/database";
 const MongoClient = MongoDb.MongoClient;
 const api = express.Router();
 
-
-
 api.get("/all", (req, res, next) => {
+    console.log("Request received:", "get", "/survey/all");
     const survey = getDb().collection("survey");
     const query = {};
     const projection = {
@@ -22,8 +21,9 @@ api.get("/all", (req, res, next) => {
     .then((resArray) => {
         res.json(resArray);
     })
-    .catch((err:Error) => {
-        console.log(err);
+    .catch((err: Error) => {
+        console.log("Request error:", err);
+        res.json(null);
     });
 });
 

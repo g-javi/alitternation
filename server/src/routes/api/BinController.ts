@@ -4,6 +4,7 @@ import { getDb } from "../../util/database";
 const api = express.Router();
 
 api.get("/all", (req, res, next) => {
+    console.log("Request received:", "get", "/bin/all");
     const bins = getDb().collection("bins");
     const query = {};
     const projection = {
@@ -18,8 +19,9 @@ api.get("/all", (req, res, next) => {
             }
         }));
     })
-    .catch((err:Error) => {
-        console.log(err);
+    .catch((err: Error) => {
+        console.log("Request error:", err);
+        res.json(null);
     });
 });
 

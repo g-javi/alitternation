@@ -11,14 +11,14 @@ litter.get("/items/:id", async (req, res, next) => {
 
     const barcodes = await getDb().collection("barcodes").find().toArray();
     const barcodeInformation = barcodes.find((barcodeItem) => barcodeItem.barcode == item.barcode);
-    
+
     const disposalInstructions = await getDb().collection("instructions").find().toArray();
     const disposalInstructionInfo = disposalInstructions.find(x => x.material === item.disposalMethod);
 
     item.information = barcodeInformation;
     item.disposalInstruction = disposalInstructionInfo;
 
-    if(item) {
+    if (item) {
         res.json(item)
     } else {
         res.json(null);
@@ -39,14 +39,14 @@ litter.get("/barcode/:barcodeNumber", async (req, res, next) => {
     const item = barcodeItems.find((item) => item.barcode == req.params.barcodeNumber);
     const barcodes = await getDb().collection("barcodes").find().toArray();
     const barcodeInformation = barcodes.find((barcodeItem) => barcodeItem.barcode == item.barcode);
-    
+
     const disposalInstructions = await getDb().collection("instructions").find().toArray();
     const disposalInstructionInfo = disposalInstructions.find(x => x.material === item.disposalMethod);
 
     item.information = barcodeInformation;
     item.disposalInstruction = disposalInstructionInfo;
-    
-    if(item) {
+
+    if (item) {
         res.json(item);
     } else {
         res.json(null);
@@ -55,7 +55,7 @@ litter.get("/barcode/:barcodeNumber", async (req, res, next) => {
 
 litter.get("/instructions/:itemId", async (req, res, next) => {
     const item = await getDb().collection("litter").find({ _id: new ObjectID(req.params.itemId) }).toArray();
-    
+
     const disposalMethod = item[0].disposalMethod;
     const instructions = await getDb().collection("instructions").find({ material: disposalMethod }).toArray();
     if (instructions) {
@@ -69,32 +69,37 @@ litter.get("/instructions/:itemId", async (req, res, next) => {
 
 litter.get("/records/all", async (req, res, next) => {
     const records = await getDb().collection("records").find().toArray();
-    if(records){
+    if (records) {
         res.json(records);
     }
-    else{
+    else {
         res.json(null);
     }
 });
 
 litter.post("/record", async (req, res, next) => {
-    try{
+    try {
         const item = await getDb().collection("litter").find({ _id: new ObjectID(req.body.itemId) }).toArray();
-        if(!item.length){
+        if (!item.length) {
             throw Error("Litter item does not exist");
         }
+
+        const latitude = parseFloat(req.body.latitude);
+        const longitude = parseFloat(req.body.longitude);
+        const radius = parseFloat(req.body.radius);
+
         const record = {
             item: item[0],
-            latitude: req.body.latitude,
-            longitude: req.body.longitude,
-            radius: req.body.radius,
+            latitude: isNaN(latitude) ? null : latitude,
+            longitude: isNaN(longitude) ? null : longitude,
+            radius: isNaN(radius) ? null : radius,
             collected: req.body.collected,
             date: new Date()
         };
         await getDb().collection("records").insertOne(record);
         res.status(200).json(null);
     }
-    catch(e){
+    catch (e) {
         console.log(e);
         res.status(500).json(null);
     }
@@ -112,14 +117,14 @@ litter.post("/item/new", async (req, res, next) => {
     // "disposalMethod": "glass"
 
     const result = await getDb().collection("litter").insertOne(newItem);
-    if(result.insertedCount > 0) {
+    if (result.insertedCount > 0) {
         const id = result.insertedId;
         res.json(id);
     } else {
         res.json(null);
     }
 
-    
+
 });
 
 export default litter;

@@ -8,7 +8,7 @@ import * as $ from 'jquery';
 })
 export class UserService {
   public _currentUser: BehaviorSubject<any> = new BehaviorSubject<any>(undefined);
-  private readonly SERVER_ENDPOINT = 'http://localhost:8080/';
+  private readonly SERVER_ENDPOINT = 'https://alitternation.com/';
 
   constructor(private _cookieService: CookieService) {
     try {

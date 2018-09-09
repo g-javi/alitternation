@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class LitterItemsService {
-  private readonly SERVER_ENDPOINT = 'http://localhost:8080/';
+  private readonly SERVER_ENDPOINT = 'https://alitternation.com/';
   private _listSubject: BehaviorSubject<any> = new BehaviorSubject<any>([]);
   constructor() { }
 

@@ -83,7 +83,7 @@ const originalGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.
 
 navigator.mediaDevices.getUserMedia = (constrains: any): Promise<MediaStream> => {
   // console.log(constrains);
-  const newConstrains: any = {
+  let newConstrains: any = {
     video: {
       width: { ideal: window.innerWidth },
       height: { ideal: window.innerHeight },
@@ -91,6 +91,24 @@ navigator.mediaDevices.getUserMedia = (constrains: any): Promise<MediaStream> =>
     }
   };
 
+
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    newConstrains = {
+      video: {
+        width: { ideal: window.innerWidth },
+        height: { ideal: window.innerHeight },
+        facingMode: { exact: 'environment' }
+      }
+    };
+  } else {
+    newConstrains = {
+      video: {
+        width: { ideal: window.innerWidth },
+        height: { ideal: window.innerHeight },
+        deviceId: constrains.deviceId
+      }
+    };
+  }
   // constrains.video = newConstrains;
   // console.log(newConstrains);
   // return Promise.resolve(new MediaStream());

@@ -54,6 +54,16 @@ litter.get("/instructions/:itemId", async (req, res, next) => {
 
 });
 
+litter.get("/records/all", async (req, res, next) => {
+    const records = await getDb().collection("records").find().toArray();
+    if(records){
+        res.json(records);
+    }
+    else{
+        res.json(null);
+    }
+});
+
 litter.post("/record", async (req, res, next) => {
     try{
         const item = await getDb().collection("litter").find({ _id: new ObjectID(req.body.itemId) }).toArray();

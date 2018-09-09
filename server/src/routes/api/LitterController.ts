@@ -54,6 +54,39 @@ litter.get("/instructions/:itemId", async (req, res, next) => {
 
 });
 
+litter.get("/records/all", async (req, res, next) => {
+    const records = await getDb().collection("records").find().toArray();
+    if(records){
+        res.json(records);
+    }
+    else{
+        res.json(null);
+    }
+});
+
+litter.post("/record", async (req, res, next) => {
+    try{
+        const item = await getDb().collection("litter").find({ _id: new ObjectID(req.body.itemId) }).toArray();
+        if(!item.length){
+            throw Error("Litter item does not exist");
+        }
+        const record = {
+            item: item[0],
+            latitude: req.body.latitude,
+            longitude: req.body.longitude,
+            radius: req.body.radius,
+            collected: req.body.collected,
+            date: new Date()
+        };
+        await getDb().collection("records").insertOne(record);
+        res.status(200).json(null);
+    }
+    catch(e){
+        console.log(e);
+        res.status(500).json(null);
+    }
+});
+
 litter.post("/item/new", async (req, res, next) => {
     const newItem = req.body;
 
@@ -74,6 +107,6 @@ litter.post("/item/new", async (req, res, next) => {
     }
 
     
-})
+});
 
 export default litter;

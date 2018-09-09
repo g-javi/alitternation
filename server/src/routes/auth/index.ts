@@ -15,6 +15,7 @@ auth.post("/login", (req, res, next) => {
 auth.get('/logout', (req: any, res) => {
     req.logout();
     req.session = null;
+    res.cookie('user_details', null);
     res.redirect('/');
 });
 

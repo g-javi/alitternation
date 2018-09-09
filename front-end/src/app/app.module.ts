@@ -21,6 +21,7 @@ import { MediaService } from './services/media.service';
 import { UserService } from './services/user.service';
 import { LitterItemsService } from './services/litter-items.service';
 import { ItemInfoService } from './services/item-info.service';
+import { MapService } from './services/map.service';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { ItemInfoService } from './services/item-info.service';
     MediaService,
     UserService,
     LitterItemsService,
-    ItemInfoService
+    ItemInfoService,
+    MapService
   ],
   bootstrap: [
     AppComponent

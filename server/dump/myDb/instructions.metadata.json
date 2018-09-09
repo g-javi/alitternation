@@ -1,1 +1,1 @@
-{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"myDb.instructions"}],"uuid":"170bee99bca6423dad9bb5660193032e"}
+{"options":{},"indexes":[{"v":1,"key":{"_id":1},"name":"_id_","ns":"myDb.instructions"}]}

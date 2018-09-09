@@ -15,4 +15,22 @@ export class ItemInfoService {
       });
     });
   }
+
+  // TODO: Observable?
+  getItemById(id: string) {
+    return new Promise(resolve => {
+      $.getJSON(this.SERVER_ENDPOINT + 'litter/items/' + id).done((_) => {
+        resolve(_);
+      });
+    });
+  }
+
+  // TODO: Observable?
+  getItemByBarcode(code: string) {
+    return new Promise(resolve => {
+      $.getJSON(this.SERVER_ENDPOINT + 'litter/barcode/' + code).done(_ => {
+        resolve(_);
+      });
+    });
+  }
 }

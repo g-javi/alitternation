@@ -1,9 +1,19 @@
 <div class="top-bar sticky">
   <button (click)="goBack()">&lt;-</button>
-  <span>Item detail info (item id = {{ id }})</span>
+  <span *ngIf="itemInfo | async as info">{{ info?.title }}</span>
 </div>
 
 <div id="item-info">
-  Item information for this yet to be published...
-  {{ _itemInfo.activeItem | json }}
+  <h3>Description</h3>
+  <p *ngIf="itemInfo | async as info">{{ info?.description }}</p>
+
+  <h3>Disposal</h3>
+  <p *ngIf="itemInfo | async as info">This item {{ info?.recyclable ? "can" : "can't" }} be recycled.</p>
+  <p *ngIf="itemInfo | async as info">{{ info?.disposalInstruction?.instructions }}</p>
+
+  <a [routerLink]="['/bin-map']">Find your nearest bin</a>
+
+  <p>
+    <button id="report-button" (click)="reportItem()">Report/Report+10c</button>
+  </p>
 </div>

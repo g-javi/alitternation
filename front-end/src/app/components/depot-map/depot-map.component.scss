@@ -1,0 +1,22 @@
+.top-bar {
+    button {
+        background: transparent;
+        border: 0;
+        margin: 0;
+
+        &:hover,
+        &:focus {
+            background: rgba(255,255,255,0.3);
+        }
+    }
+}
+
+#map {
+    background: #ddd;
+    flex-grow: 1
+}
+
+#map-button-container {
+    display: flex;
+    flex-direction: column;
+}

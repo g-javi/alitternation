@@ -7,7 +7,7 @@ const litter = express.Router();
 
 litter.get("/items/:id", async (req, res, next) => {
     const litter = await getDb().collection("litter").find().toArray();
-    const item = litter.find((item: any) => item._id == req.params.id);
+    const item = litter.find((item: any) => item._id.toString() ==  req.params.id);
 
     const barcodes = await getDb().collection("barcodes").find().toArray();
     const barcodeInformation = barcodes.find((barcodeItem) => barcodeItem.barcode == item.barcode);

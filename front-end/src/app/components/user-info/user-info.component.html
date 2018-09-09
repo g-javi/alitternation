@@ -1,18 +1,20 @@
 <div class="top-bar sticky">
   <button (click)="goBack()">&lt;-</button>
-  <span>{{username}}</span>
+  <span *ngIf="user$ | async as user">{{user?.firstName}} {{user?.lastName}}</span>
 </div>
 
 <div class="credit-owing-message">
   You have collected
-  <div class="credit-amount">{{ (credit / 100) | currency:'AUD':'$' }}</div>
+  <div class="credit-amount" *ngIf="user$ | async as user">{{ (user?.balance / 100) | currency:'AUD':'$' }}</div>
   that can be redeemed at your local recycling depot
 </div>
 
 <div>
   <a>Where is my nearest recycling depot?</a>
 </div>
-
+<div *ngIf="user$ | async as user">
+  <img [src]="'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + user?.googleId">
+</div>
 <div>
   <a>Sign out</a>
 </div>

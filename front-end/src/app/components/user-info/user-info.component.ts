@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { UserService } from '../../services/user.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-info',
@@ -11,9 +14,19 @@ export class UserInfoComponent implements OnInit {
 
   private username: string = "{{username}}";
 
-  constructor() { }
-
-  ngOnInit() {
+  user$: Observable<any>;
+  constructor(
+    private _user: UserService,
+    private readonly location: Location
+  ) {
+    this.user$ = _user._currentUser.asObservable();
   }
 
+  ngOnInit() {
+    this._user.updateBalance();
+  }
+
+  goBack() {
+    this.location.back();
+  }
 }

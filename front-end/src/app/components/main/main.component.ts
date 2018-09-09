@@ -52,6 +52,6 @@ export class MainComponent implements OnInit {
   }
 
   goToSignIn() {
-    window.location.href = "/auth/google";
+    window.location.href = "http://localhost:8080/auth/google";
   }
 }

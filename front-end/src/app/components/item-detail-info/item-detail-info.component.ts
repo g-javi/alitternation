@@ -76,11 +76,11 @@ export class ItemDetailInfoComponent implements OnInit {
         })
           .then(() => {
             // Only submit credit increment when item depositable
-            if (!itemDepositable) {
+            const user = this._userService._currentUser.value;
+            if (!itemDepositable && !user) {
               return;
             }
 
-            const user = this._userService._currentUser.value;
             const googleId = user.googleId;
 
             return $.post({

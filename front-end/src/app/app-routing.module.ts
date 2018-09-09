@@ -7,6 +7,7 @@ import { ItemDetailInfoComponent } from './components/item-detail-info/item-deta
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { UserSignInComponent } from './components/user-sign-in/user-sign-in.component';
 import { UserGuard } from './guards/user.guard';
+import { BinMapComponent } from './components/bin-map/bin-map.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path: 'user-sign-in',
     component: UserSignInComponent,
+  },
+  {
+    path: 'bin-map',
+    component: BinMapComponent
   },
   {
     path: '**',

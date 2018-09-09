@@ -37,7 +37,7 @@ export class ItemFormComponent implements OnInit {
     if (this.addressForm.valid) {
       console.log(this.addressForm.value);
       $.post('https://alitternation.com/litter/item/new', this.addressForm.value).done(_ => {
-        console.log(_);
+        this.router.navigate(['item-lookup']);
       });
     }
   }

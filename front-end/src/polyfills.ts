@@ -78,3 +78,21 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+const originalGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
+
+navigator.mediaDevices.getUserMedia = (constrains: any): Promise<MediaStream> => {
+  // console.log(constrains);
+  const newConstrains: any = {
+    video: {
+      width: { ideal: window.innerWidth },
+      height: { ideal: window.innerHeight },
+      deviceId: constrains.deviceId
+    }
+  };
+
+  // constrains.video = newConstrains;
+  // console.log(newConstrains);
+  // return Promise.resolve(new MediaStream());
+  return originalGetUserMedia(newConstrains);
+};

@@ -1,6 +1,5 @@
 import express from "express";
 import { getDb } from "../../util/database"
-import { addAllLitterData } from "../../util/retrieveFromDb";
 import { ObjectID } from "mongodb";
 
 const litter = express.Router();
@@ -76,6 +75,28 @@ litter.post("/record", async (req, res, next) => {
         console.log(e);
         res.status(500).json(null);
     }
+});
+
+litter.post("/item/new", async (req, res, next) => {
+    const newItem = req.body;
+
+    // Expected interface for litter
+    // "barcode": 8002270018794,
+    // "description": "San Pellegrino Limonata",
+    // "title": "San Pellegrino Limonata",
+    // "recyclable": true,
+    // "tags": ["glass", "bottle"],
+    // "disposalMethod": "glass"
+
+    const result = await getDb().collection("litter").insertOne(newItem);
+    if(result.insertedCount > 0) {
+        const id = result.insertedId;
+        res.json(id);
+    } else {
+        res.json(null);
+    }
+
+    
 });
 
 export default litter;

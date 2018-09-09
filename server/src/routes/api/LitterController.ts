@@ -33,23 +33,38 @@ litter.get("/items", async (req, res, next) => {
 
 litter.get("/barcode/:barcodeNumber", async (req, res, next) => {
     // const litter = await addAllLitterData(getDb());
-    const litter = await getDb().collection("litter").find().toArray();
-    const barcodeItems = litter.filter((item) => item.barcode);
 
-    const item = barcodeItems.find((item) => item.barcode == req.params.barcodeNumber);
-    const barcodes = await getDb().collection("barcodes").find().toArray();
-    const barcodeInformation = barcodes.find((barcodeItem) => barcodeItem.barcode == item.barcode);
+    // const barcodeNumber
+    try {
+        const litter = await getDb().collection("litter").find().toArray();
+        const barcodeItems = litter.filter((item) => item.barcode);
 
-    const disposalInstructions = await getDb().collection("instructions").find().toArray();
-    const disposalInstructionInfo = disposalInstructions.find(x => x.material === item.disposalMethod);
+        if (barcodeItems.length === 0) {
+            res.json(null);
+        }
 
-    item.information = barcodeInformation;
-    item.disposalInstruction = disposalInstructionInfo;
+        const item = barcodeItems.find((item) => item.barcode == req.params.barcodeNumber);
+        if (item !== undefined) {
+            res.json(null);
+        }
 
-    if (item) {
-        res.json(item);
-    } else {
+        const barcodes = await getDb().collection("barcodes").find().toArray();
+        const barcodeInformation = barcodes.find((barcodeItem) => barcodeItem.barcode == item.barcode);
+        
+        const disposalInstructions = await getDb().collection("instructions").find().toArray();
+        const disposalInstructionInfo = disposalInstructions.find(x => x.material === item.disposalMethod);
+
+        item.information = barcodeInformation;
+        item.disposalInstruction = disposalInstructionInfo;
+        
+        if(item) {
+            res.json(item);
+        } else {
+            res.json(null);
+        }
+    } catch (err) {
         res.json(null);
+        console.log(err);
     }
 });
 

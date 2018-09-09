@@ -16,4 +16,12 @@ export class MapService {
       });
     });
   }
+
+  getReportedSurvey() {
+    return new Promise(resolve => {
+      $.getJSON(this.SERVER_ENDPOINT + 'litter/records/all').done((_) => {
+        resolve(_);
+      });
+    });
+  }
 }

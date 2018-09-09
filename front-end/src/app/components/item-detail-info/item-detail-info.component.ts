@@ -33,7 +33,7 @@ export class ItemDetailInfoComponent implements OnInit {
 
   get reportItemTextValue() {
     const itemInfo = this._itemInfo.value;
-    const itemDepositable = !!itemInfo.information.depositable;
+    const itemDepositable = itemInfo.information ? !!itemInfo.information.depositable : false;
     const user = this._userService._currentUser.value;
 
     if (itemDepositable && user) {

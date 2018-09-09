@@ -48,6 +48,42 @@ export class MainComponent implements OnInit, AfterViewInit {
       });
     }
 
+    this._map.getReportedSurvey().then((_: any) => {
+      _.forEach(area => {
+
+        const contentString = `
+          <div class="map-popup">
+            <p>
+              <span>
+                Reported item type: ${area.item.recyclable ? 'Recyclable' : 'Non-recyclable'}
+              </span>
+              <br>
+              <span>
+                Reported at: ${new Date(area.date).toDateString()}
+              </span>
+            </p>
+          </div>
+        `;
+
+        const infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+        console.log({ lat: area.latitude, lng: area.longitude });
+        const marker = new google.maps.Marker({
+          position: { lat: area.latitude, lng: area.longitude },
+          map: map,
+          title: `Reported`
+        });
+        marker.addListener('click', () => {
+          if (this.infoWindow) {
+            this.infoWindow.close();
+          }
+          infowindow.open(map, marker);
+          this.infoWindow = infowindow;
+        });
+      });
+    });
+
     this._map.getHistoricalSurvey().then((_: any) => {
       _.forEach(area => {
 
@@ -86,7 +122,6 @@ export class MainComponent implements OnInit, AfterViewInit {
         }
       });
     });
-
   }
 
   goToImageCapture() {

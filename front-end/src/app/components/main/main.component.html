@@ -11,10 +11,10 @@
   </div>
   
   <div id="user-info" class="translucent-bg" *ngIf="_user._currentUser | async as user ;else noLogin">
+    <span>{{ (user.balance / 100) | currency:'AUD':'$' }}&nbsp;</span>
     <a [routerLink]="['/user-info']">
       <img [src]="user.profile.value">
     </a>
-    <span >{{ (user.balance / 100) | currency:'AUD':'$' }}</span>
   </div>
 
   <ng-template #noLogin>

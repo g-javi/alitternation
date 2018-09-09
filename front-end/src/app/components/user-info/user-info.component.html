@@ -10,7 +10,7 @@
 </div>
 
 <div>
-  <a>Where is my nearest recycling depot?</a>
+  <a [routerLink]="['/depot-map']">Where is my nearest recycling depot?</a>
 </div>
 <div *ngIf="user$ | async as user">
   <img [src]="'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + user?.googleId">

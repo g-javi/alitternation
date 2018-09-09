@@ -22,6 +22,7 @@ import { LitterItemsService } from './services/litter-items.service';
 import { ItemInfoService } from './services/item-info.service';
 import { BinMapComponent } from './components/bin-map/bin-map.component';
 import { NewItemFormComponent } from './components/new-item-form/new-item-form.component';
+import { DepotMapComponent } from './components/depot-map/depot-map.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { NewItemFormComponent } from './components/new-item-form/new-item-form.c
     ItemDetailInfoComponent,
     UserInfoComponent,
     BinMapComponent,
-    NewItemFormComponent
+    NewItemFormComponent,
+    DepotMapComponent,
   ],
   imports: [
     BrowserModule,

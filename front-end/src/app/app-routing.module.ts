@@ -5,7 +5,6 @@ import { ImageCaptureComponent } from './components/image-capture/image-capture.
 import { ItemLookupComponent } from './components/item-lookup/item-lookup.component';
 import { ItemDetailInfoComponent } from './components/item-detail-info/item-detail-info.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
-import { UserSignInComponent } from './components/user-sign-in/user-sign-in.component';
 import { UserGuard } from './guards/user.guard';
 import { BinMapComponent } from './components/bin-map/bin-map.component';
 
@@ -31,10 +30,6 @@ const routes: Routes = [
     path: 'user-info',
     component: UserInfoComponent,
     canActivate: [UserGuard]
-  },
-  {
-    path: 'user-sign-in',
-    component: UserSignInComponent,
   },
   {
     path: 'bin-map',

@@ -1,7 +1,7 @@
 import express from "express";
 import LitterController from "./api/LitterController";
 import SurveyController from "./api/SurveyController";
-import BinsController from "./api/BinController";
+import BinController from "./api/BinController";
 import RecoveryCentreController from "./api/RecoveryCentreController";
 import auth from "./auth";
 import UserController from "./api/UserController";
@@ -34,7 +34,7 @@ router.get('/', (req: any, res) => {
 });
 
 router.use("/survey", SurveyController);
-router.use("/bins", BinsController);
+router.use("/bins", BinController);
 router.use("/centres", RecoveryCentreController);
 router.use("/litter", LitterController);
 router.use("/user", UserController);

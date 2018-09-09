@@ -6,35 +6,45 @@ const litter = express.Router();
 
 
 litter.get("/items/:id", async (req, res, next) => {
-    const litter = await getDb().collection("litter").find().toArray();
-    const item = litter.find((item: any) => item._id.toString() ==  req.params.id);
+    console.log("Request received:", "get", "/litter/items/:id");
+    try {
+        const litter = await getDb().collection("litter").find().toArray();
+        const item = litter.find((item: any) => item._id.toString() ==  req.params.id);
 
-    const barcodes = await getDb().collection("barcodes").find().toArray();
-    const barcodeInformation = barcodes.find((barcodeItem) => barcodeItem.barcode == item.barcode);
+        const barcodes = await getDb().collection("barcodes").find().toArray();
+        const barcodeInformation = barcodes.find((barcodeItem) => barcodeItem.barcode == item.barcode);
 
-    const disposalInstructions = await getDb().collection("instructions").find().toArray();
-    const disposalInstructionInfo = disposalInstructions.find(x => x.material === item.disposalMethod);
+        const disposalInstructions = await getDb().collection("instructions").find().toArray();
+        const disposalInstructionInfo = disposalInstructions.find(x => x.material === item.disposalMethod);
 
-    item.information = barcodeInformation;
-    item.disposalInstruction = disposalInstructionInfo;
+        item.information = barcodeInformation;
+        item.disposalInstruction = disposalInstructionInfo;
 
-    if (item) {
-        res.json(item)
-    } else {
+        if (item) {
+            res.json(item)
+        } else {
+            res.json(null);
+        }
+    } catch (err) {
+        console.log("Request error:", err);
         res.json(null);
     }
 });
 
 litter.get("/items", async (req, res, next) => {
-    const litter = await getDb().collection("litter").find().toArray();
+    console.log("Request received:", "get", "/litter/items");
+    try {
+        const litter = await getDb().collection("litter").find().toArray();
 
-    res.json(litter);
+        res.json(litter);
+    } catch (err) {
+        console.log("Request error:", err);
+        res.json(null);
+    }
 });
 
 litter.get("/barcode/:barcodeNumber", async (req, res, next) => {
-    // const litter = await addAllLitterData(getDb());
-
-    // const barcodeNumber
+    console.log("Request received:", "get", "/litter/barcode/:barcodeNumber");
     try {
         const litter = await getDb().collection("litter").find().toArray();
         const barcodeItems = litter.filter((item) => item.barcode);
@@ -44,7 +54,7 @@ litter.get("/barcode/:barcodeNumber", async (req, res, next) => {
         }
 
         const item = barcodeItems.find((item) => item.barcode == req.params.barcodeNumber);
-        if (item !== undefined) {
+        if (item === undefined) {
             res.json(null);
         }
 
@@ -63,36 +73,47 @@ litter.get("/barcode/:barcodeNumber", async (req, res, next) => {
             res.json(null);
         }
     } catch (err) {
+        console.log("Request error:", err);
         res.json(null);
-        console.log(err);
     }
 });
 
 litter.get("/instructions/:itemId", async (req, res, next) => {
-    const item = await getDb().collection("litter").find({ _id: new ObjectID(req.params.itemId) }).toArray();
+    console.log("Request received:", "get", "/litter/instructions/:itemId");
+    try {
+        const item = await getDb().collection("litter").find({ _id: new ObjectID(req.params.itemId) }).toArray();
 
-    const disposalMethod = item[0].disposalMethod;
-    const instructions = await getDb().collection("instructions").find({ material: disposalMethod }).toArray();
-    if (instructions) {
-        res.json(instructions);
-    } else {
+        const disposalMethod = item[0].disposalMethod;
+        const instructions = await getDb().collection("instructions").find({ material: disposalMethod }).toArray();
+        if (instructions) {
+            res.json(instructions);
+        } else {
+            res.json(null);
+        }
+    } catch (err) {
+        console.log("Request error:", err);
         res.json(null);
     }
-
-
 });
 
 litter.get("/records/all", async (req, res, next) => {
-    const records = await getDb().collection("records").find().toArray();
-    if (records) {
-        res.json(records);
-    }
-    else {
+    console.log("Request received:", "get", "/litter/records/all");
+    try {
+        const records = await getDb().collection("records").find().toArray();
+        if (records) {
+            res.json(records);
+        }
+        else {
+            res.json(null);
+        }
+    } catch (err) {
+        console.log("Request error:", err);
         res.json(null);
     }
 });
 
 litter.post("/record", async (req, res, next) => {
+    console.log("Request received:", "post", "/litter/record");
     try {
         const item = await getDb().collection("litter").find({ _id: new ObjectID(req.body.itemId) }).toArray();
         if (!item.length) {
@@ -114,14 +135,14 @@ litter.post("/record", async (req, res, next) => {
         await getDb().collection("records").insertOne(record);
         res.status(200).json(null);
     }
-    catch (e) {
-        console.log(e);
-        res.status(500).json(null);
+    catch (err) {
+        console.log("Request error:", err);
+        res.json(null);
     }
 });
 
 litter.post("/item/new", async (req, res, next) => {
-    const newItem = req.body;
+    console.log("Request received:", "post", "/litter/item/new");
 
     // Expected interface for litter
     // "barcode": 8002270018794,
@@ -130,16 +151,19 @@ litter.post("/item/new", async (req, res, next) => {
     // "recyclable": true,
     // "tags": ["glass", "bottle"],
     // "disposalMethod": "glass"
-
-    const result = await getDb().collection("litter").insertOne(newItem);
-    if (result.insertedCount > 0) {
-        const id = result.insertedId;
-        res.json(id);
-    } else {
+    try {
+        const newItem = req.body;
+        const result = await getDb().collection("litter").insertOne(newItem);
+        if (result.insertedCount > 0) {
+            const id = result.insertedId;
+            res.json(id);
+        } else {
+            res.json(null);
+        }
+    } catch (err) {
+        console.log("Request error:", err);
         res.json(null);
     }
-
-
 });
 
 export default litter;

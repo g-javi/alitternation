@@ -2,6 +2,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { MapService } from '../../services/map.service';
 
 @Component({
   selector: 'app-main',
@@ -11,10 +12,11 @@ import { UserService } from '../../services/user.service';
 export class MainComponent implements OnInit {
   @ViewChild('map') gmapElement: any;
   map: google.maps.Map;
-
+  infoWindow: any;
   constructor(
     private readonly router: Router,
-    private _user: UserService
+    private _user: UserService,
+    private _map: MapService
   ) { }
 
   ngOnInit() {
@@ -39,6 +41,46 @@ export class MainComponent implements OnInit {
         map.setCenter(pos);
       });
     }
+    
+
+    this._map.getHistoricalSurvey().then((_: any) => {
+      _.forEach(area => {
+
+        if (area.Latitude !== '') {
+          const contentString = `
+            <div class="map-popup">
+              <h3>Council: ${area.Council}</h3>
+              <p>
+                <span>
+                  Estimated location size: ${area['Estimated location size']}
+                </span>
+                <br>
+                <span>
+                  Total number of items: ${area['Total number of items']}
+                </span>
+              </p>
+            </div>
+          `;
+
+          const infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+          console.log({ lat: area.Latitude, lng: area.Longitude });
+          const marker = new google.maps.Marker({
+            position: { lat: area.Latitude, lng: area.Longitude },
+            map: map,
+            title: `Council: ${area.Council}`
+          });
+          marker.addListener('click', () => {
+            if (this.infoWindow) {
+              this.infoWindow.close();
+            }
+            infowindow.open(map, marker);
+            this.infoWindow = infowindow;
+          });
+        }
+      });
+    });
 
   }
 

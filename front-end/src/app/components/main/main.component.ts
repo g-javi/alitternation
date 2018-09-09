@@ -13,7 +13,7 @@ export class MainComponent implements OnInit {
   map: google.maps.Map;
 
   constructor(
-    private router: Router,
+    private readonly router: Router,
     private _user: UserService
   ) { }
 
@@ -48,5 +48,10 @@ export class MainComponent implements OnInit {
 
   goToItemLookup() {
     this.router.navigate(['/item-lookup']);
+
+  }
+
+  goToSignIn() {
+    window.location.href = "/auth/google";
   }
 }

@@ -27,7 +27,7 @@
     "glass": {
         "material": "glass",
         "info": "Only glass used for packaging (e.g. bottles and jars) is collected for recycling through the household recycling bin. Other glass items are manufactured differently which makes them more prone to shattering and less suitable for recycling.",
-        "instructions": "Do not recycle!"
+        "instructions": "Recycle in yellow bin"
     },
     "plasticBag": {
         "material": "plasticBag",
@@ -37,6 +37,6 @@
     "foodWaste": {
         "material": "foodWaste",
         "info": "Empty your containers of food and liquids before you recycle them. A small amount of residue is acceptable and will not ruin the whole load of recycling.",
-        "instructions": "Recycle in yellow bin"
+        "instructions": "Recycle containers in yellow bin. Food waste can go in the green bins."
     }
 }

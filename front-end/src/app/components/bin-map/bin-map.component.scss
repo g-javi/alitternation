@@ -10,3 +10,13 @@
         }
     }
 }
+
+#map {
+    background: #ddd;
+    flex-grow: 1
+}
+
+#map-button-container {
+    display: flex;
+    flex-direction: column;
+}

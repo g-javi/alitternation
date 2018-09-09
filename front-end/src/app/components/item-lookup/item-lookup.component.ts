@@ -21,7 +21,7 @@ export class ItemLookupComponent implements OnInit {
     private _vision: ImageRecognitionService
   ) {
     this._itemService.list.subscribe(data => {
-      this.items = data;
+      this.items = data.sort((a,b) => a.title.localeCompare(b.title));
     });
   }
 

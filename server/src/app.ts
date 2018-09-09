@@ -44,6 +44,8 @@ connect().then(() => {
     app.use('/item-detail-info/:id', express.static(path.join(__dirname, '/static')));
     app.use('/user-info', express.static(path.join(__dirname, '/static')));
     app.use('/user-sign-in', express.static(path.join(__dirname, '/static')));
+    app.use('/depot-map', express.static(path.join(__dirname, '/static')));
+    app.use('/bin-map', express.static(path.join(__dirname, '/static')));
 
     
     app.use(router);

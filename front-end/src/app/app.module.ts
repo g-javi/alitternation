@@ -13,7 +13,6 @@ import { ItemDetailInfoComponent } from './components/item-detail-info/item-deta
 import { ItemLookupComponent } from './components/item-lookup/item-lookup.component';
 import { MainComponent } from './components/main/main.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
-import { UserSignInComponent } from './components/user-sign-in/user-sign-in.component';
 import { BarcodeService } from './services/barcode.service';
 import { GeoLocationService } from './services/geo-location.service';
 import { ImageRecognitionService } from './services/image-recognition.service';
@@ -22,6 +21,8 @@ import { UserService } from './services/user.service';
 import { LitterItemsService } from './services/litter-items.service';
 import { ItemInfoService } from './services/item-info.service';
 import { MapService } from './services/map.service';
+import { BinMapComponent } from './components/bin-map/bin-map.component';
+import { DepotMapComponent } from './components/depot-map/depot-map.component';
 
 @NgModule({
   declarations: [
@@ -31,8 +32,9 @@ import { MapService } from './services/map.service';
     ImageCaptureComponent,
     ItemLookupComponent,
     ItemDetailInfoComponent,
-    UserSignInComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    BinMapComponent,
+    DepotMapComponent
   ],
   imports: [
     BrowserModule,

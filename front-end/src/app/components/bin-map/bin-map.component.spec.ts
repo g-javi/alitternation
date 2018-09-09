@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserSignInComponent } from './user-sign-in.component';
+import { BinMapComponent } from './bin-map.component';
 
-describe('UserSignInComponent', () => {
-  let component: UserSignInComponent;
-  let fixture: ComponentFixture<UserSignInComponent>;
+describe('BinMapComponent', () => {
+  let component: BinMapComponent;
+  let fixture: ComponentFixture<BinMapComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserSignInComponent ]
+      declarations: [ BinMapComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserSignInComponent);
+    fixture = TestBed.createComponent(BinMapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

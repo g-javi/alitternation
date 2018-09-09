@@ -53,6 +53,7 @@ export class MainComponent implements OnInit, AfterViewInit {
 
         const contentString = `
           <div class="map-popup">
+            <h3>Item: ${area.item.title}</h3>
             <p>
               <span>
                 Reported item type: ${area.item.recyclable ? 'Recyclable' : 'Non-recyclable'}

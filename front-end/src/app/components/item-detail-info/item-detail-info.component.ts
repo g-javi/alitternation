@@ -64,6 +64,8 @@ export class ItemDetailInfoComponent implements OnInit {
     let latitude = null;
     let longitude = null;
     let radius = null;
+    
+    const user = this._userService._currentUser.value;
 
     this._geo.currentLocation()
       .then((position: Position | null) => {
@@ -88,7 +90,6 @@ export class ItemDetailInfoComponent implements OnInit {
         })
           .then(() => {
             // Only submit credit increment when item depositable
-            const user = this._userService._currentUser.value;
             if (!itemDepositable || !user) {
               return;
             }
@@ -100,7 +101,7 @@ export class ItemDetailInfoComponent implements OnInit {
             });
           })
           .then(() => {
-            if (itemDepositable) {
+            if (itemDepositable && user) {
               alert("Item reported and you've received 10c credit");
             } else {
               alert("Item reported, thank you");

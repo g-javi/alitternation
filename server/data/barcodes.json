@@ -1,25 +1,31 @@
 {
     "9315596302119": {
         "depositable": true,
-        "amount": 10
+        "amount": 10,
+        "barcode": "9315596302119"
     },
     "4901005510340": {
-        "depositable": false
+        "depositable": false,
+        "barcode": "4901005510340"
     },
     "9315596002750": {
         "depositable": true,
-        "amount": 10
+        "amount": 10,
+        "barcode": "9315596002750"
     },
     "9300675075329": {
         "depositable": true,
-        "amount": 10
+        "amount": 10,
+        "barcode": "9300675075329"
     },
     "8002270018794": {
         "depositable": true,
-        "amount": 10
+        "amount": 10,
+        "barcode": "8002270018794"
     },
     "9317523346418": {
         "depositable": true,
-        "amount": 10
+        "amount": 10,
+        "barcode": "9317523346418"
     }
 }

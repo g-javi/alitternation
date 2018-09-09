@@ -11,7 +11,7 @@ import { ImageRecognitionService } from '../../services/image-recognition.servic
   styleUrls: ['./item-lookup.component.scss']
 })
 export class ItemLookupComponent implements OnInit {
-  private items: { _id: number, description: string }[] = [];
+  private items: { _id: number, description: string, tags?: string[] }[] = [];
   private searchQuery = '';
 
   constructor(
@@ -32,7 +32,12 @@ export class ItemLookupComponent implements OnInit {
       return this.items;
     }
 
-    return this.items.filter(item => item.description.toLowerCase().indexOf(str) !== -1);
+    return this.items.filter(item => {
+      return (
+        item.description.toLowerCase().indexOf(str) !== -1
+        || (item.tags && item.tags.some(tag => tag.toLowerCase().indexOf(str) !== -1))
+      );
+    });
   }
 
   ngOnInit() {

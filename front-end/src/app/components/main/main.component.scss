@@ -10,9 +10,22 @@
 
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+    height: 4rem;
 
     padding: 1rem 0.5rem;
     color: #fff;
+}
+
+#sign-in {
+    background: green;
+    font-size: 0.8em;
+    line-height: 1.5;
+    border: 0;
+    text-align: right;
+    margin-left: auto;
+    padding: 0.3rem 0.5rem;
 }
 
 #map-button-container {

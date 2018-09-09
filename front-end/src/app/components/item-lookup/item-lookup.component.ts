@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LitterItemsService } from '../../services/litter-items.service';
-import { ImageCaptureComponent } from '../image-capture/image-capture.component';
 import { ImageRecognitionService } from '../../services/image-recognition.service';
+import { LitterItemsService } from '../../services/litter-items.service';
 
 @Component({
   selector: 'app-item-lookup',

@@ -1,7 +1,7 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { MatButtonModule, MatDialogModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule, MatDialogModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule, MatInputModule, MatSelectModule, MatRadioModule, MatCardModule, MatSnackBarModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CookieModule } from 'ngx-cookie';
@@ -24,6 +24,8 @@ import { MapService } from './services/map.service';
 import { BinMapComponent } from './components/bin-map/bin-map.component';
 import { NewItemFormComponent } from './components/new-item-form/new-item-form.component';
 import { DepotMapComponent } from './components/depot-map/depot-map.component';
+import { ItemFormComponent } from './components/item-form/item-form.component';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { DepotMapComponent } from './components/depot-map/depot-map.component';
     BinMapComponent,
     NewItemFormComponent,
     DepotMapComponent,
+    ItemFormComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +54,13 @@ import { DepotMapComponent } from './components/depot-map/depot-map.component';
     MatListModule,
     MatDialogModule,
     FormsModule,
-    CookieModule.forRoot()
+    CookieModule.forRoot(),
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   providers: [
     BarcodeService,

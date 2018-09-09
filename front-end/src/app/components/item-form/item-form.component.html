@@ -1,0 +1,95 @@
+<div class="top-bar sticky">
+  <button mat-icon-button (click)="goBack()">
+    <mat-icon>arrow_back_ios</mat-icon>
+  </button>
+  <!-- <button class="back-button" (click)="goBack()"></button> -->
+  <span>Item Form</span>
+</div>
+
+<form [formGroup]="addressForm" novalidate>
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>
+        <h3>
+           Item Information
+        </h3>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Title" formControlName="title">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Description" formControlName="description">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <!-- <mat-form-field class="full-width"> -->
+            <!-- <input matInput placeholder="Disposal Type" formControlName="disposalMethod"> -->
+          <!-- </mat-form-field> -->
+
+          <mat-form-field  class="full-width">
+            <mat-select placeholder="Disposal Type" formControlName="disposalMethod">
+              <mat-option value="paper">
+                Paper
+              </mat-option>
+              <mat-option value="cardboard">
+                Cardboard
+              </mat-option>
+              <mat-option value="plastic">
+                Plastic
+              </mat-option>
+              <mat-option value="metal">
+                Metal
+              </mat-option>
+              <mat-option value="tissue">
+                Tissue
+              </mat-option>
+              <mat-option value="glass">
+                Glass
+              </mat-option>
+              <mat-option value="plasticBag">
+                Plastic Bag
+              </mat-option>
+              <mat-option value="foodWaste">
+                 Food Waste
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Barcode" formControlName="barcode">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <span> Recyclable</span> <br>
+          <mat-radio-group class="full-width" formControlName="recyclable">
+            <mat-radio-button class="example-radio-button" [value]="true" >
+              Yes
+            </mat-radio-button>
+            <mat-radio-button class="example-radio-button" [value]="false">
+              No
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+      
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

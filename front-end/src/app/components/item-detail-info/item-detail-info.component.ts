@@ -7,6 +7,7 @@ import { UserService } from '../../services/user.service';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import * as $ from "jquery";
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-item-detail-info',
@@ -24,7 +25,8 @@ export class ItemDetailInfoComponent implements OnInit {
     private readonly router: Router,
     public _itemInfoService: ItemInfoService,
     public _userService: UserService,
-    public _geo: GeoLocationService
+    public _geo: GeoLocationService,
+    private _snackBar: MatSnackBar
   ) { }
 
   get itemInfo() {
@@ -102,9 +104,13 @@ export class ItemDetailInfoComponent implements OnInit {
           })
           .then(() => {
             if (itemDepositable && user) {
-              alert("Item reported and you've received 10c credit");
+              this._snackBar.open("Item reported and you've received 10c credit", null, {
+                duration: 2000,
+              });
             } else {
-              alert("Item reported, thank you");
+              this._snackBar.open("Item reported, thank you", null, {
+                duration: 2000,
+              });
             }
 
             this.router.navigate(["/"]);

@@ -47,11 +47,11 @@ export class BarcodeService {
     return new Promise(resolve => {
       this._codeReader.decodeFromInputVideoDevice(deviceId, elementId)
         .then(result => {
-          console.log(result.text);
+          // console.log(result.text);
           resolve(result.text);
         })
         .catch(err => {
-          console.error(err);
+          // console.error(err);
           resolve(null);
         });
     });
@@ -62,7 +62,7 @@ export class BarcodeService {
     return this._codeReader.getVideoInputDevices()
       .then(videoInputDevices => {
         videoInputDevices.forEach(device => {
-          console.log(`${device.label}, ${device.deviceId}`);
+          // console.log(`${device.label}, ${device.deviceId}`);
           this._videoDevices.push({
             id: device.deviceId,
             label: device.label

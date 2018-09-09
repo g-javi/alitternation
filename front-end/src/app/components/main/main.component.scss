@@ -18,7 +18,7 @@
     color: #fff;
 
     background-image: url(../../../assets/alitternation_wordmark_white_path.svg);
-    background-size: 13rem;
+    background-size: 10rem;
     background-position: 0.5rem center;
     background-repeat: no-repeat;
 }
@@ -51,7 +51,8 @@
 
     .cta-question {
         padding: 0.3rem;
-        background: green;
+        background: #444444;
+        font-size: 0.9em;
     }
 
     .button-container {
@@ -60,7 +61,7 @@
         & > button {
             flex-shrink: 0;
             flex-grow: 1;
-            height: 10rem;
+            height: 7rem;
 
             display: block;
             background: transparent;
@@ -82,4 +83,13 @@
 
 .translucent-bg {
     background: rgba(0,0,0,0.9);
+}
+
+#login {
+    line-height: 1rem;
+}
+
+
+img {
+    border-radius: 100%;
 }

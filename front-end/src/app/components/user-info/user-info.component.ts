@@ -29,4 +29,10 @@ export class UserInfoComponent implements OnInit {
   goBack() {
     this.location.back();
   }
+
+  makeUrl(id: string) {
+    const newURL = id.split('?');
+
+    return newURL[0] + '?z=150';
+  }
 }

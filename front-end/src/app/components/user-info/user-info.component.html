@@ -1,20 +1,36 @@
 <div class="top-bar sticky">
-    <button class="back-button" (click)="goBack()"></button>
+  <button mat-icon-button (click)="goBack()">
+    <mat-icon>arrow_back_ios</mat-icon>
+  </button>
+    <!-- <button class="back-button" (click)="goBack()"></button> -->
     <span *ngIf="user$ | async as user">{{user?.firstName}} {{user?.lastName}}</span>
 </div>
 
-<div class="credit-owing-message">
-  You have collected
-  <div class="credit-amount" *ngIf="user$ | async as user">{{ (user?.balance / 100) | currency:'AUD':'$' }}</div>
-  that can be redeemed at your local recycling depot
-</div>
+<mat-card>
 
-<div>
-  <a [routerLink]="['/depot-map']">Where is my nearest recycling depot?</a>
-</div>
-<div *ngIf="user$ | async as user">
-  <img [src]="'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + user?.googleId">
-</div>
-<div>
-  <a>Sign out</a>
-</div>
+  <div class="user-img-profile">
+    <div *ngIf="user$ | async as user" [style.background-image]="'url(' + makeUrl(user.profile?.value) + ')'">
+
+    </div>
+  </div>
+  <div class="credit-owing-message">
+    You have collected
+    <div class="credit-amount" *ngIf="user$ | async as user">{{ (user?.balance / 100) | currency:'AUD':'$' }}</div>
+    that can be redeemed at your local recycling depot
+  </div>
+  
+  <!-- <div>
+    <a [routerLink]="['/depot-map']">Where is my nearest recycling depot?</a>
+  </div>   -->
+  
+  <div *ngIf="user$ | async as user" class="qr-code">
+    <img [src]="'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + user?.googleId">
+  </div>
+
+  <a [routerLink]="['/depot-map']" class="report-button" mat-stroked-button color="">Where is my nearest recycling depot?</a>
+  
+  <!-- <div>
+    <a>Sign out</a>
+  </div> -->
+
+</mat-card>

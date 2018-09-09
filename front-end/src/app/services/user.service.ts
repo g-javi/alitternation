@@ -25,6 +25,10 @@ export class UserService {
   }
 
   updateBalance() {
+
+    if (!this._currentUser.value) {
+      return;
+    }
     return new Promise(resolve => {
       $.getJSON(this.SERVER_ENDPOINT + 'user/balance/' + this._currentUser.value.googleId).done((_) => {
         const currentValues = this._currentUser.value;

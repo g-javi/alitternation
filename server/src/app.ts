@@ -39,6 +39,7 @@ connect().then(() => {
 
     // Use router
     app.use('/', express.static(path.join(__dirname, '/static')));
+    app.use('/item-form', express.static(path.join(__dirname, '/static')));
     app.use('/image-capture', express.static(path.join(__dirname, '/static')));
     app.use('/item-lookup', express.static(path.join(__dirname, '/static')));
     app.use('/item-detail-info/:id', express.static(path.join(__dirname, '/static')));

@@ -1,8 +1,11 @@
 <div class="full-screen-wrapper">  
     <div id="map-button-container" class="full-screen-wrapper">
       <div class="top-bar sticky">
-          <button class="back-button" (click)="goBack()"></button>
-          <span>Recycling Depot Locations</span>
+        <button mat-icon-button (click)="goBack()">
+          <mat-icon>arrow_back_ios</mat-icon>
+        </button>
+          <!-- <button class="back-button" (click)="goBack()"></button> -->
+        <span>Recycling Depot Locations</span>
       </div>
       <div #map id="map"></div>
     </div>

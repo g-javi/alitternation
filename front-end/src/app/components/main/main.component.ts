@@ -69,7 +69,7 @@ export class MainComponent implements OnInit, AfterViewInit {
         const infowindow = new google.maps.InfoWindow({
           content: contentString
         });
-        console.log({ lat: area.latitude, lng: area.longitude });
+        // console.log({ lat: area.latitude, lng: area.longitude });
         const marker = new google.maps.Marker({
           position: { lat: area.latitude, lng: area.longitude },
           map: map,
@@ -107,7 +107,7 @@ export class MainComponent implements OnInit, AfterViewInit {
           const infowindow = new google.maps.InfoWindow({
             content: contentString
           });
-          console.log({ lat: area.Latitude, lng: area.Longitude });
+          // console.log({ lat: area.Latitude, lng: area.Longitude });
           const marker = new google.maps.Marker({
             position: { lat: area.Latitude, lng: area.Longitude },
             map: map,

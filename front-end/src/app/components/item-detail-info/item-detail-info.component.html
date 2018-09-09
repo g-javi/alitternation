@@ -1,19 +1,23 @@
 <div class="top-bar sticky">
-    <button class="back-button" (click)="goBack()"></button>
+  <button mat-icon-button (click)="goBack()">
+    <mat-icon>arrow_back_ios</mat-icon>
+  </button>
+    <!-- <button class="back-button" (click)="goBack()"></button> -->
     <span *ngIf="itemInfo | async as info">{{ info?.title }}</span>
 </div>
 
 <div id="item-info">
-  <h3>Description</h3>
-  <p *ngIf="itemInfo | async as info">{{ info?.description }}</p>
+  <mat-card>  
+      <h3>Description</h3>
+      <p *ngIf="itemInfo | async as info">{{ info?.description }}</p>
+      
+      <h3>Disposal</h3>
+      <p *ngIf="itemInfo | async as info">This item {{ info?.recyclable ? "can" : "can't" }} be recycled.</p>
+      <p *ngIf="itemInfo | async as info">{{ info?.disposalInstruction?.instructions }}</p>
+      
+      <!-- <a ></a> -->
+      <a [routerLink]="['/bin-map']" class="report-button" mat-stroked-button color="" >Find your nearest bin</a>
+      <button class="report-button" mat-raised-button color="primary" (click)="reportItem()">{{ reportItemTextValue }}</button>
+  </mat-card>
 
-  <h3>Disposal</h3>
-  <p *ngIf="itemInfo | async as info">This item {{ info?.recyclable ? "can" : "can't" }} be recycled.</p>
-  <p *ngIf="itemInfo | async as info">{{ info?.disposalInstruction?.instructions }}</p>
-
-  <a [routerLink]="['/bin-map']">Find your nearest bin</a>
-
-  <p>
-    <button id="report-button" (click)="reportItem()">{{ reportItemTextValue }}</button>
-  </p>
 </div>

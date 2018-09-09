@@ -6,3 +6,46 @@
         font-weight: 100;
     }
 }
+
+.report-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    padding: 0.5rem;
+    text-transform: capitalize;
+    margin-bottom: 5px;
+}
+
+a.report-button {
+   
+    color: #000;
+}
+
+.qr-code {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    height: 150px;
+    background: white;
+}
+
+.user-img-profile {
+    height: 150px;
+    margin: 10px;
+}
+
+.user-img-profile div {
+    height: 150px;
+    width: 150px;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 100%;
+    background-size: cover;
+}
+
+mat-card {
+    margin: 10px;
+}

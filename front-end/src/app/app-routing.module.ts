@@ -7,7 +7,8 @@ import { ItemDetailInfoComponent } from './components/item-detail-info/item-deta
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { UserGuard } from './guards/user.guard';
 import { BinMapComponent } from './components/bin-map/bin-map.component';
-import { DepotMapComponent } from "./components/depot-map/depot-map.component";
+import { DepotMapComponent } from './components/depot-map/depot-map.component';
+import { ItemFormComponent } from './components/item-form/item-form.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,10 @@ const routes: Routes = [
   {
     path: 'depot-map',
     component: DepotMapComponent
+  },
+  {
+    path: 'item-form',
+    component: ItemFormComponent
   },
   {
     path: '**',

@@ -20,6 +20,7 @@ import { MediaService } from './services/media.service';
 import { UserService } from './services/user.service';
 import { LitterItemsService } from './services/litter-items.service';
 import { ItemInfoService } from './services/item-info.service';
+import { BinMapComponent } from './components/bin-map/bin-map.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ItemInfoService } from './services/item-info.service';
     ImageCaptureComponent,
     ItemLookupComponent,
     ItemDetailInfoComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    BinMapComponent
   ],
   imports: [
     BrowserModule,

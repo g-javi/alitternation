@@ -77,7 +77,7 @@ export class ItemDetailInfoComponent implements OnInit {
           .then(() => {
             // Only submit credit increment when item depositable
             const user = this._userService._currentUser.value;
-            if (!itemDepositable && !user) {
+            if (!itemDepositable || !user) {
               return;
             }
 

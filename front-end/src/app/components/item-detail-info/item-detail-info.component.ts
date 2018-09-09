@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { ItemInfoService } from '../../services/item-info.service';
 import { GeoLocationService } from '../../services/geo-location.service';
+import { UserService } from '../../services/user.service';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import * as $ from "jquery";
@@ -22,6 +23,7 @@ export class ItemDetailInfoComponent implements OnInit {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     public _itemInfoService: ItemInfoService,
+    public _userService: UserService,
     public _geo: GeoLocationService
   ) { }
 
@@ -71,18 +73,30 @@ export class ItemDetailInfoComponent implements OnInit {
             radius,
             collected: true,
           },
-        }).done(() => {
-          // TODO: Depositable items should increment credit
-          
-          if (itemDepositable) {
-            alert("Item reported and you've received $[xx] credit");
-          } else {
-            alert("Item reported, thank you");
-          }
-          
-          this.router.navigate(["/"]);
-        });
-      })
+        })
+          .then(() => {
+            // Only submit credit increment when item depositable
+            if (!itemDepositable) {
+              return;
+            }
+
+            const user = this._userService._currentUser.value;
+            const googleId = user.googleId;
+
+            return $.post({
+              url: `/user/balance/${googleId}/10`,
+            });
+          })
+          .then(() => {
+            if (itemDepositable) {
+              alert("Item reported and you've received 10c credit");
+            } else {
+              alert("Item reported, thank you");
+            }
+
+            this.router.navigate(["/"]);
+          });
+      });
 
   }
 }
